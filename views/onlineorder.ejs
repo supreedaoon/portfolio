@@ -1,0 +1,81 @@
+<%include partials/header %>
+
+    <div class="container" style=" margin-bottom: 20px; background-color: rgba(245, 245, 245, .6);">
+
+        <header class="jumbotron">
+            <div class="container">
+                <h1>
+                    Product Online Order
+                </h1>
+
+                <p>
+                    Stay at home and let your favourite courier deliver healthy food right at your door step
+                </p>
+            </div>
+
+        </header>
+		
+		<div class = "well well-sm text-danger" style = "padding-left: 30px">
+			<h4>
+				We currently do not offer online order due to staff shortage. 
+				Numbers of our staffs are on vacation with family members, who came back as the result of the 'Blip'. 
+				We apologize for the inconvenience this may cause. 
+			</h4>
+		</div>
+
+        <div class="row" style="display:flex; flex-wrap:wrap;">
+            <% products.forEach(function(product){ %>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail">
+                        <img src="<%= product.image %>">
+                        <div style="color:red; font-size: 0.5em; text-align: right ">
+                            <a href='http://www.freepik.com'>
+                                <%= product.att %>
+                            </a>
+                        </div>
+                        <div class="caption text-center">
+                            <h5>
+                                <%= product.name %>
+                            </h5>
+                        </div>
+						
+							<div class = "row" style = "padding-left: 25px; margin-right: 5px;">
+								<% var amountDisplayId = "amountDisplay" + product.id %>
+                                    <div id=<%= amountDisplayId%>;  class= "text-center">
+										<h5>
+                                        <%= product.order %>
+										</h5>	
+                                    </div>
+								<div style = "text-align:center;">
+									<% var addItemId = "addItem" + product.id%>
+                                <button id=<%= addItemId %>; class="btn btn btn-primary btn-sm" type="button" aria-pressed="true" 
+										onClick="updateAmount(<%= product.id %>)">Add to cart</button>
+                                <button id="clearItem" class="btn btn btn-danger btn-sm" type="button" aria-pressed="true">Remove</button>
+								</div>
+									
+							</div>
+                    </div>
+                </div>
+				
+
+                <% }); %>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        function updateAmount(id) {
+            alert("We currently do not offer online order due to staff shortage. We apologize for the inconvenience this may cause.");
+        }
+    </script>
+
+    <!-- onClick="reply_click(this.id)" -->
+    <script type="text/javascript">
+        function reply_click(clicked_id) {
+            alert(clicked_id);
+        }
+    </script>
+
+    <%include partials/footer %>

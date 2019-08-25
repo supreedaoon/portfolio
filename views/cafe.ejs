@@ -1,0 +1,67 @@
+<%include partials/header %>
+
+    <div class="container" style=" margin-bottom: 20px; background-color: rgba(245, 245, 245, .6);">
+
+        <header class="jumbotron">
+            <div class="container">
+                <h1>
+                    Sunshine Cafe
+                </h1>
+
+                <p>
+                    Food and drink from fresh organic products
+                </p>
+            </div>
+
+        </header>
+		
+		
+		<div class = "well well-sm text-center" >
+			<h3>
+				All foods and drinks contain healthy level of heart-shaped herb extract.
+			</h3>
+		</div>
+		
+
+        
+            <%var alternate = true;%>
+                <% home_image.forEach(function(farm_image){ %>
+                    <% if (farm_image.tag == "cafe"){ %>
+                        <% if (alternate == true ){ %>
+							<div class="container">
+                            <div class="row align-items-center" style = "margin-buttom: 20px">
+                				<div class="col-lg-4 col-md-6 col-sm-6">
+                                    <img src="<%= farm_image.image %>"  class="img-rounded img-responsive">
+                                </div>
+                				<div div class="col-lg-8 col-md-6 col-sm-6 center-block text-center" style = "padding: 150px">
+                    				<h4 style = "font-family: Josefin Sans; font-size: 28px">
+									
+									<%= farm_image.name %>	
+									</h4>
+                				</div>
+							</div>
+            				</div>
+                    
+                        <% } else {%>
+							<div class="container">
+                            <div class="row align-items-center" style = "margin-buttom: 20px">
+                				
+                				<div div class="col-lg-8 col-md-6 col-sm-6 center-block text-center" style = "padding: 150px">
+                    				<h4 style = "font-family: Josefin Sans; font-size: 28px" >
+										<%= farm_image.name %>
+									</h4>
+                				</div>
+								<div class="col-lg-4 col-md-6 col-sm-6">
+                                    <img src="<%= farm_image.image %>"  class="img-rounded img-responsive">
+                                </div>
+							</div>
+            				</div>
+							
+						<% } %>
+						<% alternate = !alternate; %>
+                    <% } %>
+                <% }); %>
+			
+		</div>			
+
+        <%include partials/footer %>
