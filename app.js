@@ -64,6 +64,7 @@ app.get("/visit", function(req,res){
 	res.render("visit.ejs");
 });
 
-app.listen(3000, process.env.IP, function(){
-	console.log("Listen to port 3000");
+const port = process.env.PORT || 3000;
+
+app.listen(port, process.env.IP, function(){
 });
