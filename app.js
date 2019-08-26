@@ -39,8 +39,13 @@ var products = [
 	{id: 8, order: 0, stock: 10, name: "Mixed Rice 250 Baht/Pack" , price: "250", image: "https://drive.google.com/uc?id=1C_JlQZW_thZP_1eQjQluSTcqTJUgnWsy", 
 	 att: "Designed by rawpixel.com / Freepik"},
 	{id: 9, order: 0, stock: 10, name: "Heart-Shaped Herb Extract 2,000 Baht/Bottle" , price: "2000",image: "https://drive.google.com/uc?id=1hYyub2xL9lJp7amCld6sVcpnJc_tGWNK", att: "Designed by Freepik"}
-	
 ]
+
+// var review_image = [
+// 	{type: "visit", star: "5", image: "", review: "Best expereice for family"},
+// 	{type: "visit", star: "4", iamge: "", review: "The farm was so nice but the cafe was understaff"},
+// 	{type: "visit", star: "5", image: "", review: "I love my iced-coffee"}
+// ]
 
 app.get("/", function(req,res){
 	res.render("home.ejs", {home_image:home_image});
@@ -65,6 +70,22 @@ app.get("/visit", function(req,res){
 
 app.get("/review", function(req,res){
 	res.render("review.ejs");
+});
+
+app.post("review", function(req,res){
+	res.send("You hit the post route");
+})
+
+app.get("/review/new", function(req,res){
+	res.render("new.ejs");
+});
+
+app.get("/signup", function(req,res){
+	res.render("signup.ejs");
+});
+
+app.get("/login", function(req,res){
+	res.render("login.ejs");
 });
 
 const port = process.env.PORT || 3000;
