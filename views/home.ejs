@@ -30,23 +30,6 @@
                 <li data-target="#myCarousel" data-slide-to="2"></li> -->
 
             </ol>
-
-            <!-- Wrapper for slides -->
-            <!-- <div class="carousel-inner">
-
-                <div class="item active" style="height: 500px">
-                    <img src="https://drive.google.com/uc?id=1XeQRBMFsipIahRwqWimSyLGf2UdqI_zb" style="height: 500px;  width: 50%; margin: auto;">
-                </div>
-
-                <div class="item">
-                    <img src="https://drive.google.com/uc?id=1M6RmMCsJ28_7UuABTX5SkeJBEXafluJO" style="height: 500px;  width: 50%; margin: auto;">
-                </div>
-
-                <div class="item">
-                    <img src="https://drive.google.com/uc?id=14R4BdDsHTaarwi8Yi9RscjA5CEpPycfo" style="height: 500px;  width: 50%; margin: auto;">
-                </div>
-
-            </div> -->
 			
 			<div class="carousel-inner">
 			<% var first = 0; %>
@@ -54,11 +37,11 @@
                         <% if (first == 0) { %>
                             <div class="item active">
 
-                                <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" style="height: 500px;  width: 50%; margin: auto;">
+                                <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" style="width: 50%; margin: auto;">
                             </div>
                         <% }else{ %>
                                 <div class="item">
-                                    <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" style="height: 500px;  width: 50%; margin: auto;">
+                                    <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" style="width: 50%; margin: auto;">
                                 </div>
                             <% } %>
                             <% first = first +1; %>

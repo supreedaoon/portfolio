@@ -29,11 +29,11 @@
                     <% if (farm_image.tag == "cafe"){ %>
                         <% if (alternate == true ){ %>
 							<div class="container">
-                            <div class="row align-items-center" style = "margin-buttom: 20px">
+                            <div class="row  align-items-center content" style = "margin-buttom: 50px">
                 				<div class="col-lg-4 col-md-6 col-sm-6">
-                                    <img src="<%= farm_image.image %>"  class="img-rounded img-responsive">
+                                    <img src="<%= farm_image.image %>"  class="img-rounded img-responsive" style="padding-left:100px">
                                 </div>
-                				<div div class="col-lg-8 col-md-6 col-sm-6 center-block text-center" style = "padding: 150px">
+                				<div div class="col-lg-8 col-md-6 col-sm-6 center-block text-center" style = "padding-top: 100px; padding-right: 150px;">
                     				<h4 style = "font-family: Josefin Sans; font-size: 28px">
 									
 									<%= farm_image.name %>	
@@ -44,15 +44,15 @@
                     
                         <% } else {%>
 							<div class="container">
-                            <div class="row align-items-center" style = "margin-buttom: 20px">
+                            <div class="row  align-items-center content" style = "margin-buttom: 50px">
                 				
-                				<div div class="col-lg-8 col-md-6 col-sm-6 center-block text-center" style = "padding: 150px">
-                    				<h4 style = "font-family: Josefin Sans; font-size: 28px" >
+                				<div div class="col-lg-8 col-md-6 col-sm-6 center-block text-center" style = "padding-buttom: 50px">
+                    				<h4 style = "font-family: Josefin Sans; font-size: 28px; padding-top: 100px; padding-left: 100 px">
 										<%= farm_image.name %>
 									</h4>
                 				</div>
 								<div class="col-lg-4 col-md-6 col-sm-6">
-                                    <img src="<%= farm_image.image %>"  class="img-rounded img-responsive">
+                                    <img src="<%= farm_image.image %>"  class="img-rounded; img-responsive" style= "padding-right: 100px;">
                                 </div>
 							</div>
             				</div>
