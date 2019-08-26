@@ -51,8 +51,7 @@ app.get("/farm", function(req,res){
 });
 
 app.get("/cafe", function(req,res){
-	 var farm_map = {name:"Map", image: "https://drive.google.com/uc?id=16o1xgaJBcjtVGf82JKKwH7VQ22ixge9u"}
-	res.render("cafe.ejs", {home_image:home_image, farm_map:farm_map, });
+	res.render("cafe.ejs", {home_image:home_image});
 });
 
 app.get("/onlineorder", function(req,res){
@@ -61,6 +60,10 @@ app.get("/onlineorder", function(req,res){
 
 app.get("/visit", function(req,res){
 	res.render("visit.ejs");
+});
+
+app.get("/review", function(req,res){
+	res.render("review.ejs");
 });
 
 const port = process.env.PORT || 3000;
