@@ -4,6 +4,8 @@ var bodyParser = require("body-parser");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(express.static(__dirname + "/public"));
+
 var home_image = [
 		{tag:"farm", name: "Morning sun and grass", image: "https://drive.google.com/uc?id=1dRz1V6mmqg8R8mMlrlW_WtSvFE5XIJAw"},
 		{tag:"farm", name: "Morning dew", image: "https://drive.google.com/uc?id=1V5SUSRFavMkNjXH-NZqry2PgXAEZMTPJ"},
@@ -74,7 +76,7 @@ app.get("/review", function(req,res){
 
 app.post("review", function(req,res){
 	res.send("You hit the post route");
-})
+});
 
 app.get("/review/new", function(req,res){
 	res.render("new.ejs");

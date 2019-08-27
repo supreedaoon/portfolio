@@ -1,6 +1,6 @@
 <%include partials/header %>
 
-    <div class="container" style=" margin-bottom: 20px; background-color: rgba(245, 245, 245, .6);">
+    <div class="container main_container">
 
         <header class="jumbotron">
             <div class="container">
@@ -15,7 +15,7 @@
 
         </header>
 		
-		<div class = "well well-sm text-danger" style = "padding-left: 30px">
+		<div class = "well well-sm text-danger pad_left">
 			<h4>
 				We currently do not offer online order due to staff shortage. 
 				Numbers of our staffs are on vacation with family members, who came back as the result of the 'Blip'. 
@@ -23,13 +23,13 @@
 			</h4>
 		</div>
 
-        <div class="row" style="display:flex; flex-wrap:wrap;">
+        <div class="row row_simple">
             <% products.forEach(function(product){ %>
 
                 <div class="col-md-3 col-sm-6">
                     <div class="thumbnail">
-                        <img src="<%= product.image %>" style = "width: 100%; display: block;">
-                        <div style="color:red; font-size: 0.5em; text-align: right ">
+                        <img src="<%= product.image %>" class = "img_thumbnail">
+                        <div class = "ref_link">
                             <a href='http://www.freepik.com'>
                                 <%= product.att %>
                             </a>
@@ -40,14 +40,14 @@
                             </h5>
                         </div>
 						
-							<div class = "row" style = "padding-left: 25px; margin-right: 5px;">
+							<div class = "row row_order_display">
 								<% var amountDisplayId = "amountDisplay" + product.id %>
                                     <div id=<%= amountDisplayId%>;  class= "text-center">
 										<h5>
                                         <%= product.order %>
 										</h5>	
                                     </div>
-								<div style = "text-align:center;">
+								<div class = "button_order">
 									<% var addItemId = "addItem" + product.id%>
                                 <button id=<%= addItemId %>; class="btn btn btn-primary btn-sm" type="button" aria-pressed="true" 
 										onClick="updateAmount(<%= product.id %>)">Add to cart</button>

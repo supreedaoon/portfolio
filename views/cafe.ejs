@@ -1,6 +1,6 @@
 <%include partials/header %>
 
-    <div class="container" style=" margin-bottom: 20px; background-color: rgba(245, 245, 245, .6);">
+    <div class="container main_container">
 
         <header class="jumbotron">
             <div class="container">
@@ -29,14 +29,13 @@
                     <% if (farm_image.tag == "cafe"){ %>
                         <% if (alternate == true ){ %>
 							<div class="container">
-							<div style = "padding-top: 30px"></div>
+							<div class = "space_add"></div>
                             <div class="row">
                 				<div class="col-lg-4 col-md-6 col-sm-6" >
-                                    <img src="<%= farm_image.image %>" style="width: 70%">
+                                    <img src="<%= farm_image.image %>" class = "img_cafe">
                                 </div>
-                				<div div class="col-lg-8 col-md-6 col-sm-6" style = "background-color: rgba(245, 245, 245, 1)">
-                    				<h4 style = "font-family: Josefin Sans; font-size: 28px; text-align: left">
-									
+                				<div div class="col-lg-8 col-md-6 col-sm-6 text_bg_cafe">
+                    				<h4 class = "text_cafe">
 									<%= farm_image.name %>	
 									</h4>
                 				</div>
@@ -45,16 +44,16 @@
                     
                         <% } else {%>
 							<div class="container">
-								<div style = "padding-top: 30px"></div>
+								<div class = "space_add"></div>
                             <div class="row" >
                 				
-                				<div div class="col-lg-8 col-md-6 col-sm-6" style = "background-color: rgba(245, 245, 245, .7)">
-                    				<h4 style = "font-family: Josefin Sans; font-size: 28px; text-align: right;">
+                				<div div class="col-lg-8 col-md-6 col-sm-6 text_bg_cafe">
+                    				<h4 class = "text_cafe">
 										<%= farm_image.name %>
 									</h4>
                 				</div>
 								<div class="col-lg-4 col-md-6 col-sm-6">
-                                    <img src="<%= farm_image.image %>"  class="img-rounded" style="width: 70%">
+                                    <img src="<%= farm_image.image %>"  class="img-rounded img_cafe">
                                 </div>
 							</div>
             				</div>
@@ -63,7 +62,8 @@
 						<% alternate = !alternate; %>
                     <% } %>
                 <% }); %>
-				<div style = "padding-top: 50px"></div>
+				<div class = "space_add" ></div>
+				<div class = "space_add" ></div>
 		</div>			
 
         <%include partials/footer %>

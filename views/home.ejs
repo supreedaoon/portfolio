@@ -2,7 +2,7 @@
 
 	
 
-    <div class="container" style=" margin-bottom: 20px; background-color: rgba(245, 245, 245, .6);">
+    <div class="container main_container">
 
         <header class="jumbotron">
             <div class="container">
@@ -37,11 +37,11 @@
                         <% if (first == 0) { %>
                             <div class="item active">
 
-                                <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" style="width: 50%; margin: auto;">
+                                <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" class="img_carousel">
                             </div>
                         <% }else{ %>
                                 <div class="item">
-                                    <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" style="width: 50%; margin: auto;">
+                                    <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" class="img_carousel">
                                 </div>
                             <% } %>
                             <% first = first +1; %>
@@ -59,19 +59,20 @@
             </a>
         </div>
 		
-		<div class = "well well-sm" style = "margin-top: 50px; paddig-buttom: 50px">
-			<h4 style = "text-align: center">
+		<div class = "space_add"></div>
+		<div class = "well well-sm">
+			<h4 class = "text_center">
 				Welcome to Sunshine Farm & Cafe, the first organic farm in the region. Please click images below to learn more about us.  
 			</h4>
 		</div>
 
 	<!-- Link to other pages 		 -->
-        <div class="row" style="display:flex; flex-wrap:wrap;  margin-left: auto; margin-right: auto; width: 60%; padding-top: 30px">
+        <div class="row row_thumbnail">
             
                 <div class="col-md-6 col-sm-2">
                     <div class="thumbnail">
 						<a href="/farm">
-                        <img src="https://drive.google.com/uc?id=1nNbAKfJOpQHkaMNCJPbC2UN7YIhhDKpF">
+                        <img src="https://drive.google.com/uc?id=1nNbAKfJOpQHkaMNCJPbC2UN7YIhhDKpF" class = "img_thumbnail">
 						<div class="caption text-center">
                             <h4>
                                 Farm
@@ -83,7 +84,7 @@
 				<div class="col-md-6 col-sm-2">
                     <div class="thumbnail">
 						<a href="/cafe">
-                        <img src="https://drive.google.com/uc?id=1jnr2CYQ3TtM7vv8MBlYv3EtL-BZyc4nm">
+                        <img src="https://drive.google.com/uc?id=1jnr2CYQ3TtM7vv8MBlYv3EtL-BZyc4nm" class = "img_thumbnail">
 						<div class="caption text-center">
                             <h4>
                                 Cafe
@@ -93,11 +94,11 @@
                     </div>
                 </div>
 		</div>
-		<div class="row" style="display:flex; flex-wrap:wrap; margin-left: auto; margin-right: auto; width: 60%;">
+		<div class="row row_thumbnail">
 				<div class="col-md-6 col-sm-2">
                     <div class="thumbnail">
 						<a href="/onlineorder">
-                        <img src="https://drive.google.com/uc?id=10qSzWJu6zEAxqupOy-mtt1EM6poz3Ham" style = "width: 100%; display: block;">
+                        <img src="https://drive.google.com/uc?id=10qSzWJu6zEAxqupOy-mtt1EM6poz3Ham" class = "img_thumbnail">
 						<div class="caption text-center">
                             <h4>
                                 Online Order
@@ -109,7 +110,7 @@
 				<div class="col-md-6 col-sm-2">
                     <div class="thumbnail">
 						<a href="/visit">
-                        <img src="https://drive.google.com/uc?id=1M7XhHs8f84c-4RkDxlpP42_jEHSm2R8a" style = "width: 100%; display: block;">
+                        <img src="https://drive.google.com/uc?id=1M7XhHs8f84c-4RkDxlpP42_jEHSm2R8a" class = "img_thumbnail">
 						<div class="caption text-center">
                             <h4>
                                 Visit 
