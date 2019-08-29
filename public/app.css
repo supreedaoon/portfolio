@@ -1,43 +1,56 @@
-.space_add{
-	padding-top: 30px}
+#sunshine{
+            background: url('https://drive.google.com/uc?id=1zgUxztO1RYsLFAypR9P1nadpBOgvGwf2') no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            padding-bottom: 60px;
+        }
 
-body {
-    background: url('https://drive.google.com/uc?id=1zgUxztO1RYsLFAypR9P1nadpBOgvGwf2') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    padding-bottom: 60px;
+#mypoint{
+	background-color: #D3D3D3;
 }
 
-.button_order{
-	text-align: center;
+#landing{
+	background: url("https://drive.google.com/uc?id=1yRHJAQPaAy_tLk_nD1vOaSRDstK1HVr7") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
 }
 
-.img_cafe{
-	width: 70%;
+
+.app {
+    right: 0;
+    background-color: rgba(238, 130, 238, 0.5);
 }
 
-.text_bg_cafe{
-	background-color: rgba(245, 245, 245, 1);
+.button_order {
+    text-align: center;
 }
 
-.text_cafe{
-	font-family: Josefin Sans; 
-	font-size: 28px; 
-	text-align: left;
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.img_cafe {
+    width: 70%;
 }
 
 .img_carousel {
-	width: 50%;
-	margin: auto;
-} 
+    width: 50%;
+    margin: auto;
+}
 
-.img_center{
-	 display: block; 
-	margin-left: auto; 
-	margin-right: auto; 
-	width: 30%;
+.img_center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
 }
 
 .footer {
@@ -50,65 +63,121 @@ body {
 }
 
 .footer-copyright p {
-	white-space: pre;
+    white-space: pre;
 }
 
-.main_container{
-	margin-bottom: 20px; 
-	background-color: rgba(245, 245, 245, .6);
+.footer_landing {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
 }
 
-mark{
-	background-color: rgba(255, 20, 147,.8);
-  color: white;
+.main_container {
+    margin-bottom: 20px;
+    background-color: rgba(245, 245, 245, 0.6);
+}
+
+mark {
+    background-color: rgba(255, 20, 147, 0.8);
+    color: white;
 }
 
 .my_list {
     margin: 20px;
 }
 
-.pad_left{
-	 padding-left: 30px;
+.pad_left {
+    padding-left: 30px;
 }
 
-.ref_link{
-	color: red; 
-	font-size: 0.5em; 
-	text-align: right;
+.ref_link {
+    color: red;
+    font-size: 0.5em;
+    text-align: right;
 }
 
-.row_order_display{
-	padding-left: 25px; 
-	margin-right: 5px;
+.row_order_display {
+    padding-left: 25px;
+    margin-right: 5px;
 }
 
-.row_simple{
-	display:flex; 
-	flex-wrap:wrap;	
+.row_simple {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-.img_smaller{
-	width: 80%;
-	margin: auto;
+.img_smaller {
+    width: 80%;
+    margin: auto;
 }
 
-.row_thumbnail{
-	display:flex; 
-	flex-wrap:wrap;  
-	margin-left: auto; 
-	margin-right: auto; 
-	width: 60%; 
-	padding-top: 30px;
+.row_thumbnail {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    padding-top: 30px;
 }
 
-.img_thumbnail{
-	width: 100%; 
-	display: block;
+.img_thumbnail {
+    width: 100%;
+    display: block;
 }
 
-.text_center{
-	text-align: center;
+.space_add {
+    padding-top: 30px;
 }
 
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
 
+.text_bg_cafe {
+    background-color: rgba(245, 245, 245, 1);
+}
 
+.text_center {
+    text-align: center;
+}
+
+.text_cafe {
+    font-family: Josefin Sans;
+    font-size: 28px;
+    text-align: left;
+}
+
+.text_content {
+    font-family: 'Raleway', sans-serif;
+    text-align: left;
+    color: #ffffff;
+}
+
+.text_description {
+    font-family: 'Raleway', sans-serif;
+    color: black;
+    text-align: center;
+}
+
+.text_link {
+    font-family: 'Raleway', sans-serif;
+    color: #ffffff;
+}
+
+.web {
+    left: 0;
+    background-color: rgba(0, 191, 255, 0.5);
+}
+
+.text_footer {
+    font-size: 12px;
+    color: #ffffff;
+}
