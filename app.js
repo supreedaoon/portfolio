@@ -50,6 +50,14 @@ var products = [
 // ]
 
 app.get("/", function(req,res){
+	res.render("landing.ejs");
+});
+
+app.get("/mypoint", function(req,res){
+	res.render("mypoint.ejs");
+});
+
+app.get("/sunshine", function(req,res){
 	res.render("home.ejs", {home_image:home_image});
 });
 

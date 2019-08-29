@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Su's Portfolio</title>
+    <link rel="icon" href="/su_logo.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        body {
+            background: url("https://drive.google.com/uc?id=1yRHJAQPaAy_tLk_nD1vOaSRDstK1HVr7") no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+            /* padding-bottom: 60px; */
+        }
+
+        .split {
+            height: 100%;
+            width: 50%;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            overflow-x: hidden;
+            padding-top: 20px;
+        }
+
+        .web {
+            left: 0;
+            background-color: rgba(0, 191, 255, .5);
+        }
+
+        .app {
+            right: 0;
+            background-color: rgba(238, 130, 238, .5);
+
+        }
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .text_link {
+            font-family: 'Raleway', sans-serif;
+            color: #FFFFFF;
+
+        }
+
+        a:hover,
+        a:visited,
+        a:link,
+        a:active {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+
+        .text_content {
+            font-family: 'Raleway', sans-serif;
+            text-align: left;
+            color: #FFFFFF;
+        }
+		
+		.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+}
+		
+		.text_footer{
+			font-size: 12px;
+            color: #FFFFFF;
+		}
+    </style>
+
+</head>
+
+<body>
+    <a href="/sunshine">
+        <div class="split web">
+            <div class="centered">
+
+                <div class="well well-sm my-sm-5">
+
+                    <h1 class="text_link">
+                        Website Example
+                    </h1>
+                </div>
+                <div class="well well-sm my-sm-5">
+                    <h5 class="text_content">
+                        Use: Bootstrap, Node.js, Express
+						<br>IDE: GoormIDE Cloud
+                        <br>Deploy: Heroku
+                    </h5>
+
+                </div>
+
+            </div>
+        </div>
+    </a>
+
+    <a href="/mypoint">
+        <div class="split app">
+            <div class="centered">
+
+                <div class="well well-sm my-sm-5">
+
+                    <h1 class="text_link">
+                        Android Application Example
+                    </h1>
+                </div>
+				<div class="well well-sm my-sm-5">
+                    <h5 class="text_content">
+						Use: Java, Room
+                        <br>IDE: Android Studio
+                    </h5>
+
+                </div>
+
+            </div>
+        </div>
+    </a>
+
+</body>
+	
+	<div class = "footer p-2">
+<a href="http://www.freepik.com" class = "text_footer">Designed by Freepik</a>
+	</div>
+
+</html>
