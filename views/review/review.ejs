@@ -1,0 +1,40 @@
+<%include ../partials/header %>
+
+    <div class= "container main_container">
+        <header class="jumbotron">
+            <div class="container">
+                <h1>
+                    Review
+                </h1>
+
+                <p>
+                    Experience from our visitors and online customers
+                </p>
+                <p>
+					<a class = "btn btn-primary bth-large" href = "/review/new">Add new review</a>
+				</p>
+            </div>
+        </header>
+		
+<!-- 	Display Reviews	 -->
+		<div class="row row_simple">
+            <% review_image.forEach(function(review){ %>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="thumbnail">
+                        <img src="<%= review.image %>" class = "img_thumbnail">
+                        <div class="caption text-center">
+                            <h5>
+                                <%= review.reviewTitle %>
+                            </h5>
+							<a class="btn btn-primary bth-small" href="/review/<%= review._id %>">More Information</a>
+                        </div>
+                    </div>
+                </div>
+				
+
+                <% }); %>
+
+        </div>
+</div>
+        <%include ../partials/footer %>

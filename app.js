@@ -1,10 +1,27 @@
-var express = require("express")
-var app = express();
-var bodyParser = require("body-parser");
+var express 	= require("express"),
+	app 		= express(),
+	bodyParser 	= require("body-parser"),
+	mongoose 	= require("mongoose"),
+	Review 		= require("./models/review"),
+	seedDB 		= require("./seed");
+ 
+
+mongoose.connect("mongodb://localhost:27017/sunshine", { useNewUrlParser: true });
 
 app.use(bodyParser.urlencoded({ extended: true }));
-
 app.use(express.static(__dirname + "/public"));
+
+seedDB();
+
+// var reviewSchema = new mongoose.Schema({
+// 	star: String,
+// 	image:String,
+// 	reviewTitle:String,
+// 	review:String
+// });
+
+// var Review = mongoose.model("Review",reviewSchema);
+
 
 var home_image = [
 		{tag:"farm", name: "Morning sun and grass", image: "https://drive.google.com/uc?id=1dRz1V6mmqg8R8mMlrlW_WtSvFE5XIJAw"},
@@ -43,12 +60,6 @@ var products = [
 	{id: 9, order: 0, stock: 10, name: "Heart-Shaped Herb Extract 2,000 Baht/Bottle" , price: "2000",image: "https://drive.google.com/uc?id=1hYyub2xL9lJp7amCld6sVcpnJc_tGWNK", att: "Designed by Freepik"}
 ]
 
-// var review_image = [
-// 	{type: "visit", star: "5", image: "", review: "Best expereice for family"},
-// 	{type: "visit", star: "4", iamge: "", review: "The farm was so nice but the cafe was understaff"},
-// 	{type: "visit", star: "5", image: "", review: "I love my iced-coffee"}
-// ]
-
 app.get("/", function(req,res){
 	res.render("landing.ejs");
 });
@@ -79,16 +90,89 @@ app.get("/visit", function(req,res){
 });
 
 app.get("/review", function(req,res){
-	res.render("review.ejs");
+	Review.find({},function(err, ListOfReview){
+		if(err){
+			console.log("Something went wrong");
+		}else{
+			res.render("review/review.ejs", {review_image:ListOfReview});
+		}
+		
+	});
 });
 
-app.post("review", function(req,res){
-	res.send("You hit the post route");
+//Review's Index
+app.post("/review", function(req,res){
+	//get and create new review
+	var star = req.body.star;
+	var image = req.body.image;
+	var reviewTitle = req.body.reviewTitle;
+	var review = req.body.review;
+	
+	var newReview = {star:star,image:image, reviewTitle:reviewTitle, review:review};
+	
+	Review.create(newReview, function(err,createItem){
+		if(err){
+			console.log(err);
+		}else{
+			res.redirect("/review");
+		}
+	});
+	
 });
 
+// Create new review
 app.get("/review/new", function(req,res){
-	res.render("new.ejs");
+	res.render("review/new.ejs");
 });
+
+//Show more detail about review
+app.get("/review/:id", function(req,res){
+	
+	Review.findById(req.params.id).populate("comments").exec(function(err, theReview){
+		if(err){
+			console.log(err);
+		}else{
+			res.render("review/show.ejs", {review:theReview});
+		}
+	});
+	
+});
+
+// Comment section
+app.get("/review/:id/comment/new", function(req,res){
+	
+	Review.findById(req.params.id, function(err, theReview){
+		if(err){
+			console.log(err);
+		}else{
+			res.render("comment/new.ejs", {review:theReview});
+		}
+	});
+	
+});
+
+app.post("/review/:id/comment", function(req,res){
+	Review.findById(req.params.id, function(err,theReview){
+		if(err){
+			console.log(err);
+			res.redirect("/review");
+		}else{
+			Comment.create(req.body.comments, function(err,theComment){
+				if(err){
+					console.log(err);
+				}else{
+					theReview.comments.push(theComment);
+					theReview.save();
+					res.redirect("/review/"+review._id);
+				}
+			});
+			
+		}
+	});
+	
+});
+
+
 
 app.get("/signup", function(req,res){
 	res.render("signup.ejs");

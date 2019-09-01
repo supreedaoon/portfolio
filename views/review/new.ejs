@@ -1,0 +1,64 @@
+<% include ../partials/header %>
+
+    <div class="container main_container">
+        <div class="well well-sm text_center">
+            <h1>
+                Add your review
+            </h1>
+            <p>
+                Your valued opinion is very important for our improvement
+            </p>
+
+        </div>
+
+        <div class="space_add"></div>
+        <div class="textbox_review">
+            <form action="/review" method="POST">
+                <div class="form-group">
+                    <p>Please select number of star:</p>
+                    <input type="radio" name="star" value="0"> 0
+                    <input type="radio" name="star" value="1"> 1
+                    <input type="radio" name="star" value="2"> 2
+                    <input type="radio" name="star" value="3"> 3
+                    <input type="radio" name="star" value="4"> 4
+                    <input type="radio" name="star" value="5"> 5
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="image" placeholder="Image URL">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="reviewTitle" placeholder="Title of your review">
+                </div>
+				<div class="form-group">
+                    <input class="form-control" type="text" name="review" placeholder="Review">
+                </div>
+
+                <button class="btn btn-primary btn-block button_long">Submit Review</button>
+            </form>
+        </div>
+        <div class="space_add"></div>
+        <a class="btn btn-danger bth-large" href="/review">Back To Review Page</a>
+        <div class="space_add"></div>
+    </div>
+
+    <!-- <div class="container main_container">
+		
+		<div class = "well well-sm">
+			<h3 class = "text_center">
+				This section is under construction. Estimated released date: 31 August 2019
+			</h3>
+		</div>
+		
+		<div>
+			<img src="https://drive.google.com/uc?id=1wx8hcT7oOgNJDXVeqkdhHT1-YevjntNA" class = "img_center">
+		</div>
+		<div>
+		<a href="https://www.freepik.com/free-photos-vectors/design">
+			<h6 class = "text_center">
+			Design vector created by freepik - www.freepik.com
+			</h6>	
+			</a>
+		</div>
+    </div> -->
+
+    <%include ../partials/footer %>

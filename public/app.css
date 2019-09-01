@@ -29,6 +29,11 @@
     text-align: center;
 }
 
+.button_long{
+	width:30%;
+	margin:auto;
+}
+
 .centered {
     position: absolute;
     top: 50%;
@@ -148,6 +153,11 @@ mark {
 
 .text_bg_cafe {
     background-color: rgba(245, 245, 245, 1);
+}
+
+.textbox_review{
+	width: 70%; 
+	margin:auto;
 }
 
 .text_center {

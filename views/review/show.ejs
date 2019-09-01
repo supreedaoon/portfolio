@@ -1,0 +1,47 @@
+<%include ../partials/header %>
+
+    <div class="container main_container">
+        <div class="space_add"></div>
+        <div class="well well-sm text_center">
+            <h2>
+                <%= review.reviewTitle %>
+            </h2>
+        </div>
+        <div class="space_add"></div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6">
+                <img src="<%= review.image %>" class="img_cafe">
+            </div>
+            <div div class="col-lg-8 col-md-6 col-sm-6 text_bg_cafe">
+                <h4>
+                    <span>Start Rating: </span>
+                    <%= review.star %>
+                </h4>
+                <h4>
+                    <%= review.review %>
+                </h4>
+            </div>
+			
+            
+            <div class="text_center">
+				<div class="space_add"></div>
+                <a class="btn btn-success" href="/review/<%= review._id %>/comment/new">Add New Comment</a>
+            </div>
+        </div>
+        <div class="space_add"></div>
+
+        <!-- 	Comment from other customers	 -->
+        <div>
+            <% review.comments.forEach(function(comment){ %>
+                <h4>
+                    <strong>
+                        <%= comment.author %>
+                    </strong> -
+                    <%= comment.text %>
+                </h4>
+                <%	}); %>
+        </div>
+    </div>
+
+    <%include ../partials/footer %>
