@@ -90,14 +90,15 @@ app.get("/visit", function(req,res){
 });
 
 app.get("/review", function(req,res){
-	Review.find({},function(err, ListOfReview){
-		if(err){
-			console.log("Something went wrong");
-		}else{
-			res.render("review/review.ejs", {review_image:ListOfReview});
-		}
+	// Review.find({},function(err, ListOfReview){
+	// 	if(err){
+	// 		console.log("Something went wrong");
+	// 	}else{
+	// 		res.render("review/review.ejs", {review_image:ListOfReview});
+	// 	}
 		
-	});
+	// });
+	res.render("review/review.ejs");
 });
 
 //Review's Index
