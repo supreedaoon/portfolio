@@ -3,45 +3,55 @@
     <div class="container main_container">
         <div class="space_add"></div>
         <div class="well well-sm text_center">
-            <h2>
+            <h3>
+				<span>Customer Review: "</span>
                 <%= review.reviewTitle %>
-            </h2>
+				<span> "</span>
+            </h3>
         </div>
         <div class="space_add"></div>
 
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <img src="<%= review.image %>" class="img_cafe">
+				<div class="space_add"></div>
             </div>
-            <div div class="col-lg-8 col-md-6 col-sm-6 text_bg_cafe">
-                <h4>
-                    <span>Start Rating: </span>
+            <div div class="col-lg-8 col-md-6 col-sm-6">
+                <div class = "well well-sm">
+					<h4>
+                    <span>Star Rating: </span>
                     <%= review.star %>
                 </h4>
-                <h4>
+				</div>
+				
+				<div class = "well well-sm">
+					 <h4>
                     <%= review.review %>
-                </h4>
+                	</h4>
+				</div>
+               
             </div>
 			
             
-            <div class="text_center">
+            <!-- <div class="text_center">
 				<div class="space_add"></div>
-                <a class="btn btn-success" href="/review/<%= review._id %>/comment/new">Add New Comment</a>
-            </div>
-        </div>
+                <a class="btn btn-success" href="/review/<#%= review._id %>/comment/new">Add New Comment</a>
+            </div> -->
+        <!-- </div>
         <div class="space_add"></div>
 
         <!-- 	Comment from other customers	 -->
-        <div>
-            <% review.comments.forEach(function(comment){ %>
+        <!-- <div>
+            <#% review.comments.forEach(function(comment){ %>
                 <h4>
                     <strong>
-                        <%= comment.author %>
+                        <#%= comment.author %>
                     </strong> -
-                    <%= comment.text %>
+                    <#%= comment.text %>
                 </h4>
-                <%	}); %>
-        </div>
+                <#%	}); %>
+        </div>  -->
+			
     </div>
 
     <%include ../partials/footer %>
