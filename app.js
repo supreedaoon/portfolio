@@ -10,7 +10,7 @@ var express 	= require("express"),
 
 const databaseUri = process.env.DATABASEURL || "mongodb://localhost:27017/sunshine";
 
-mongoose.connect(databaseUri, { useMongoClient: true })
+mongoose.connect(databaseUri, { useNewUrlParser: true  })
       .then(() => console.log(`Database connected`))
       .catch(err => console.log(`Database connection error: ${err.message}`));
 
