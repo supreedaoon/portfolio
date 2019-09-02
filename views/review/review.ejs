@@ -1,6 +1,6 @@
 <%include ../partials/header %>
 
-    <div class= "container main_container">
+    <div class="container main_container">
         <header class="jumbotron">
             <div class="container">
                 <h1>
@@ -10,52 +10,35 @@
                 <p>
                     Experience from our visitors and online customers
                 </p>
-				
-				<div class="well well-sm">
-            <h3 class="text-danger text_center">
-                This section is under construction. Estimated released date: 04.09.2019
-            </h3>
-        </div>
 
-        <div>
-            <img src="https://drive.google.com/uc?id=1wx8hcT7oOgNJDXVeqkdhHT1-YevjntNA" class = "img_center">
-        </div>
-        <div>
-            <a href="https://www.freepik.com/free-photos-vectors/design">
-                <h6 class ="text_center">
-                    Design vector created by freepik - www.freepik.com
-                </h6>
-            </a>
-        </div>
-				
                 <!-- <p>
 					<a class = "btn btn-primary bth-large" href = "/review/new">Add new review</a>
 				</p> -->
-				<!-- <div class = "text-danger">
+                <div class = "text-danger">
 					***Customers should be able to add their new reviews directly in the near future*** 
 				</div>
             </div>
-        </header> -->
-		
-<!-- 	Display Reviews	 -->
-		<!-- <div class="row row_simple">
-            <#% review_image.forEach(function(review){ %>
+        </header>
+
+                <!-- 	Display Reviews	 -->
+                <div class="row row_simple">
+            <% review_image.forEach(function(review){ %>
 
                 <div class="col-md-3 col-sm-6">
                     <div class="thumbnail">
-                        <img src="<#%= review.image %>" class = "img_thumbnail">
+                        <img src="<%= review.image %>" class = "img_thumbnail">
                         <div class="caption text-center">
                             <h5>
-                                <#%= review.reviewTitle %>
+                                <%= review.reviewTitle %>
                             </h5>
-							<a class="btn btn-primary bth-small" href="/review/<#%= review._id %>">More Information</a>
+							<a class="btn btn-primary bth-small" href="/review/<%= review._id %>">More Information</a>
                         </div>
                     </div>
                 </div>
 				
 
-                <#% }); %>
+                <% }); %>
 
-        </div> -->
-</div>
-        <%include ../partials/footer %>
+        </div>
+            </div>
+            <%include ../partials/footer %>

@@ -6,7 +6,15 @@ var express 	= require("express"),
 	seedDB 		= require("./seed");
  
 
-mongoose.connect("mongodb://localhost:27017/sunshine", { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost:27017/sunshine", { useNewUrlParser: true });
+mongoose.connect("mongodb+srv://zenzoo:Pparty155@cluster0-4av4p.mongodb.net/sunshine?retryWrites=true&w=majority", {
+	 useNewUrlParser: true,
+	useCreateIndex: true
+}).then (()=>{
+	console.log("Connected to DB!");
+}).catch(err=>{
+	console.log('Error!', err.message);	
+});
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
@@ -90,15 +98,15 @@ app.get("/visit", function(req,res){
 });
 
 app.get("/review", function(req,res){
-	// Review.find({},function(err, ListOfReview){
-	// 	if(err){
-	// 		console.log("Something went wrong");
-	// 	}else{
-	// 		res.render("review/review.ejs", {review_image:ListOfReview});
-	// 	}
+	Review.find({},function(err, ListOfReview){
+		if(err){
+			console.log("Something went wrong");
+		}else{
+			res.render("review/review.ejs", {review_image:ListOfReview});
+		}
 		
-	// });
-	res.render("review/review.ejs");
+	});
+	//res.render("review/review.ejs");
 });
 
 //Review's Index
