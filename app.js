@@ -7,7 +7,7 @@ var express 	= require("express"),
  
 
 // mongoose.connect("mongodb://localhost:27017/sunshine", { useNewUrlParser: true });
-mongoose.connect("mongodb+srv://zenzoo:Pparty155@cluster0-4av4p.mongodb.net/sunshine?retryWrites=true&w=majority", {
+mongoose.connect(process.env.DATABASEURL, {
 	 useNewUrlParser: true,
 	useCreateIndex: true
 }).then (()=>{
