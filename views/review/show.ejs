@@ -4,9 +4,9 @@
         <div class="space_add"></div>
         <div class="well well-sm text_center">
             <h3>
-				<span>Customer Review: "</span>
+                <span>Customer Review: "</span>
                 <%= review.reviewTitle %>
-				<span> "</span>
+                    <span> "</span>
             </h3>
         </div>
         <div class="space_add"></div>
@@ -14,34 +14,37 @@
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-6">
                 <img src="<%= review.image %>" class="img_cafe">
-				<div class="space_add"></div>
+                <div class="space_add"></div>
             </div>
             <div div class="col-lg-8 col-md-6 col-sm-6">
-                <div class = "well well-sm">
-					<h4>
-                    <span>Star Rating: </span>
-                    <%= review.star %>
-                </h4>
-				</div>
-				
-				<div class = "well well-sm">
-					 <h4>
-                    <%= review.review %>
-                	</h4>
-				</div>
-               
+                <div class="well well-sm">
+                    <h4>
+                        <span>Star Rating: </span>
+                        <%= review.star %>
+                    </h4>
+                </div>
+
+                <div class="well well-sm">
+                    <h4>
+                        <%= review.review %>
+                    </h4>
+                </div>
+
+                <div class="space_add"></div>
+                <a class="btn btn-primary bth-large" href="/review">Back To Review Page</a>
+                <div class="space_add"></div>
+
             </div>
-			
-            
+
             <!-- <div class="text_center">
 				<div class="space_add"></div>
                 <a class="btn btn-success" href="/review/<#%= review._id %>/comment/new">Add New Comment</a>
             </div> -->
-        <!-- </div>
+            <!-- </div>
         <div class="space_add"></div>
 
         <!-- 	Comment from other customers	 -->
-        <!-- <div>
+            <!-- <div>
             <#% review.comments.forEach(function(comment){ %>
                 <h4>
                     <strong>
@@ -51,7 +54,7 @@
                 </h4>
                 <#%	}); %>
         </div>  -->
-			
-    </div>
 
-    <%include ../partials/footer %>
+        </div>
+
+        <%include ../partials/footer %>

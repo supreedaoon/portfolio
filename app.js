@@ -6,20 +6,14 @@ var express 	= require("express"),
 	seedDB 		= require("./seed");
  
 
-const databaseUri = process.env.DATABASEURL || 'mongodb://localhost:27017/sunshine';
+// mongoose.connect("mongodb://localhost:27017/sunshine", { useNewUrlParser: true });
+
+const databaseUri = process.env.DATABASEURL || "mongodb://localhost:27017/sunshine";
 
 mongoose.connect(databaseUri, { useMongoClient: true })
       .then(() => console.log(`Database connected`))
       .catch(err => console.log(`Database connection error: ${err.message}`));
-// mongoose.connect("mongodb://localhost:27017/sunshine", { useNewUrlParser: true });
-// mongoose.connect(process.env.DATABASEURL, {
-// 	 useNewUrlParser: true,
-// 	useCreateIndex: true
-// }).then (()=>{
-// 	console.log("Connected to DB!");
-// }).catch(err=>{
-// 	console.log('Error!', err.message);	
-// });
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
