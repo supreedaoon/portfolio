@@ -18,7 +18,8 @@
                 <div class="well well-sm">
                     <h5>
                         <span class="text-primary pull-left">
-                            <strong>"<%= review.reviewTitle %>"</strong>
+                            <strong>"
+                                <%= review.reviewTitle %>"</strong>
                         </span>
                         <span class="pull-right">
                             <span>Star Rating: </span>
@@ -27,27 +28,44 @@
                     </h5>
                     <div class="space_add_small"></div>
                     <h5>
-                        <%= review.review %>
+                        <%= review.reviewContent %>
                     </h5>
-                    <h5 class="text_italic"> 
-                        <span>Reviewed by: </span><%= review.author.username %></h5>
+                    <h5 class="text_italic">
+                        <span>Reviewed by: </span>
+                        <%= review.author.username %>
+                    </h5>
+                    <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                        <a class="btn btn-xs btn-warning" href="/review/<%= review._id %>/edit">Edit</a>
+                        <form class="button_row" action="/review/<%= review._id %>?_method=DELETE" method="POST">
+                            <button class="btn btn-xs btn-danger">Delete</button>
+                        </form>
+                        <% }%>
+					<div class="space_add_small"></div>
                 </div>
-				
-			<!-- 				 -->
-				<div class="space_add_small"></div>
-                    <a class="btn btn-success" href="/review/<%= review._id %>/comment/new">Leave Response To This Review</a>
-				<div class="space_add_small"></div>
-				
+
+                <!-- 				 -->
+                <div class="space_add_small"></div>
+                <a class="btn btn-success" href="/review/<%= review._id %>/comment/new">Leave Response To This Review</a>
+                <div class="space_add_small"></div>
+
                 <div class="well well-sm">
                     <!-- 	Comment from other customers	 -->
                     <div>
                         <% review.comments.forEach(function(comment){ %>
-                            <h5>
-								<%= comment.text %>
-								<br><p class = "text_italic">
-								-<%= comment.author.username %>-
-                                </p>
-                            </h5>
+                            <div>
+                                <h5>
+                                    <%= comment.text %>
+                                        <br>
+                                        <p class="text_italic">-
+                                            <%= comment.author.username %>-</p>
+                                </h5>
+                                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                    <a class="btn btn-xs btn-warning" href="/review/<%= review._id %>/comment/<%=comment._id %>/edit">Edit</a>
+                                    <form class="button_row" action="/review/<%=review._id %>/comment/<%=comment._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-xs btn-danger">Delete</button>
+                                    </form>
+                                    <% } %>
+                            </div>
                             <%	}); %>
                     </div>
                 </div>

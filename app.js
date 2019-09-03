@@ -4,6 +4,7 @@ var express 	= require("express"),
 	mongoose 	= require("mongoose"),
 	passport    = require("passport"),
     LocalStrategy = require("passport-local"),
+	methodOverride = require("method-override"),
 	Review 		= require("./models/review"),
 	Comment		= require("./models/comment"),
 	User        = require("./models/user"),
@@ -24,8 +25,9 @@ mongoose.connect(databaseUri, { useNewUrlParser: true  })
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
+app.use(methodOverride("_method"));
 
-seedDB();
+//seedDB();
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
@@ -44,8 +46,8 @@ app.use(function(req, res, next){
    next();
 });
 
-app.use(ReviewRoutes);
-app.use(commentRoutes);
+app.use("/review",ReviewRoutes);
+app.use("/review/:id/comment",commentRoutes);
 app.use(indexRoutes);
 
 

@@ -2,9 +2,10 @@ var express = require("express");
 var router  = express.Router({mergeParams: true});
 var Review	= require("../models/review");
 var Comment = require("../models/comment");
+var middleware = require("../middleware");
 
 //create new comment //we don't have SHOW page exclusively for comments
-router.get("/review/:id/comment/new", isLoggedIn, function(req,res){
+router.get("/new", middleware.isLoggedIn, function(req,res){
 	
 	Review.findById(req.params.id, function(err, theReview){
 		if(err){
@@ -17,7 +18,7 @@ router.get("/review/:id/comment/new", isLoggedIn, function(req,res){
 });
 
 //handle new comment
-router.post('/review/:id/comment', isLoggedIn, function(req, res) {
+router.post('/', middleware.isLoggedIn, function(req, res) {
     Review.findById(req.params.id, function(err, theReview) {
         if (err) {
             console.log(err);
@@ -41,13 +42,41 @@ router.post('/review/:id/comment', isLoggedIn, function(req, res) {
     });
 });
 
+//Form to edit cooment
+router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
+   Comment.findById(req.params.comment_id, function(err, foundComment){
+      if(err){
+          res.redirect("back");
+      } else {
+		  Review.findById(req.params.id,function(err,foundReview){
+			   res.render("comment/edit.ejs", {review:foundReview, comment: foundComment});
+		  });
+       
+      }
+   });
+});
 
+//Handle updated comment
+router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res){
+   Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
+      if(err){
+          res.redirect("back");
+      } else {
+          res.redirect("/review/" + req.params.id );
+      }
+   });
+});
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
+//Delete Comment
+router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res){
+    //findByIdAndRemove
+    Comment.findByIdAndRemove(req.params.comment_id, function(err){
+       if(err){
+           res.redirect("back");
+       } else {
+           res.redirect("/review/" + req.params.id);
+       }
+    });
+});
 
 module.exports = router;
