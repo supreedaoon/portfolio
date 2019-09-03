@@ -1,6 +1,7 @@
 var express 	= require("express"),
 	app 		= express(),
 	bodyParser 	= require("body-parser"),
+	filter = require('content-filter'),
 	mongoose 	= require("mongoose"),
 	passport    = require("passport"),
     LocalStrategy = require("passport-local"),
@@ -8,8 +9,7 @@ var express 	= require("express"),
 	Review 		= require("./models/review"),
 	Comment		= require("./models/comment"),
 	User        = require("./models/user"),
-	seedDB 		= require("./seed");
- 
+	check		= require('express-validator');
 
 var ReviewRoutes	= require("./routes/review"),
     commentRoutes 	= require("./routes/comment"),
@@ -24,12 +24,11 @@ mongoose.connect(databaseUri, { useNewUrlParser: true  })
       .catch(err => console.log(`Database connection error: ${err.message}`));
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(filter());
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 
-//seedDB();
-
-// PASSPORT CONFIGURATION
+//Pasport Config
 app.use(require("express-session")({
     secret: "Cats and dogs are best friends",
     resave: false,
@@ -41,13 +40,15 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//pass current user
 app.use(function(req, res, next){
    res.locals.currentUser = req.user;
    next();
 });
 
-app.use("/review",ReviewRoutes);
-app.use("/review/:id/comment",commentRoutes);
+
+app.use(ReviewRoutes);
+app.use(commentRoutes);
 app.use(indexRoutes);
 
 

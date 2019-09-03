@@ -9,6 +9,10 @@
 
         <div class="space_add"></div>
 		<div class="textbox_review">
+			<divv><h5 class = "text-danger">
+				For security reason, please do not use $ in review or review's title. 
+				</h5></divv>
+			<div class="space_add_small"></div>
             <form action = "/review/<%= review._id %>?_method=PUT" method="POST">
                 <div class="form-group">
                     <span>Please select number of star again:</span>

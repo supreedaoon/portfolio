@@ -1,25 +1,43 @@
 <%include partials/header %>
 
     <div class="container main_container">
-        <header class="jumbotron">
-            <div class="container">
-                <h1>
+        
+            <div class="well well-large">
+                <h2>
                     Sign Up
-                </h1>
+                </h2>
 
-                <p>
-                   Be part of our warm and friendly community. Your chance to explore all 9 realms.
-                </p>
+                <h4>
+                    Be part of our warm and friendly community. Your chance to explore all 9 realms.
+                </h4>
             </div>
-        </header>
-		
-		<div class="well well-sm">
-<form action="/signup" method="post">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <button>Sign Up</button>
-</form>
-		</div>
+       
+
+        <div class="well well-sm">
+            <form action="/signup" method="post">
+                <input type="text" name="username" placeholder="Username: 1 to 20 characters">
+
+                <input type="password" name="password" placeholder="Password: 1 to 8 characters">
+
+                <button class="btn btn-primary bth-sm">Sign Up</button>
+
+                <div class="add_space_small"></div>
+                <div class="well well-sm text-danger">
+                    <div>
+                        Tips for Username and Password selection
+                    </div>
+                    <h6>
+                        <ul>
+                            <li>They are case-sensitive</li>
+                            <li>Contain only numbers and alphabets. (No space)</li>
+                            <li>Password contains 1 to 8 characters</li>
+                            <li>Username contains 1 to 20 characters</li>
+                        </ul>
+
+                    </h6>
+                </div>
+            </form>
+        </div>
 
         <!-- <div class="well well-sm">
             <h3 class="text-danger text_center">
@@ -37,5 +55,5 @@
                 </h6>
             </a>
         </div> -->
-</div>
-        <%include partials/footer %>
+    </div>
+    <%include partials/footer %>

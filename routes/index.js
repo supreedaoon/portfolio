@@ -1,7 +1,8 @@
-var express = require("express");
-var router  = express.Router();
-var passport = require("passport");
-var User = require("../models/user");
+var express 	= require("express");
+var router  	= express.Router();
+var passport 	= require("passport");
+var User 		= require("../models/user");
+const { check, validationResult } = require('express-validator');
 
 var home_image = [
 		{tag:"farm", name: "Morning sun and grass", image: "https://drive.google.com/uc?id=1dRz1V6mmqg8R8mMlrlW_WtSvFE5XIJAw"},
@@ -75,8 +76,18 @@ router.get("/signup", function(req, res){
    res.render("signup.ejs"); 
 });
 //handle sign up logic
-router.post("/signup", function(req, res){
+router.post("/signup", [check('username')
+  .isAlphanumeric()
+  .isLength({ min: 1, max: 5 }), check('password')
+  .isAlphanumeric()
+  .isLength({ min: 1, max: 5 })], function(req, res){
+	
     var newUser = new User({username: req.body.username});
+	const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    return res.render("signup.ejs");
+  }
+	
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);

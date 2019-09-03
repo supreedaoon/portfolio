@@ -7,7 +7,11 @@
             </h5>
     	</div>
         <h1 class = "well well-sm text_center">
-			<div class="space_add"></div>
+			<div class="space_add_small"></div>
+			<divv><h5 class = "text-danger">
+				For security reason, please do not use $ in your response. 
+				</h5></divv>
+			<div class="space_add_small"></div>
             <form action="/review/<%= review._id %>/comment/<%= comment._id %>?_method=PUT" method="POST">
                 <div class="form-group">
                     <input class="form-control" type="text" name="comment[text]" value="<%= comment.text %>">
