@@ -1,20 +1,29 @@
 <% include ../partials/header %>
 
-<div class = "container main_container">
-	
-
-    <div class="row">
-        <h1 class = "well well-sm text_center">Add New Comment to <%= review.reviewTitle %></h1>
-            <form action="/review/<%= review._id %>/comments" method="POST">
+<div class="container main_container">
+        <div class="well well-sm">
+            <h5>
+                Add reponse to review: "<span class = "text_italic"><%= review.reviewTitle %></span>"
+            </h5>
+    	</div>
+        <h1 class = "well well-sm text_center">
+			<div class="space_add"></div>
+            <form action="/review/<%= review._id %>/comment" method="POST">
                 <div class="form-group">
-                    <input class="form-control" type="text" name="comment[text]" placeholder="text">
+                    <input class="form-control" type="text" name="comment[text]" placeholder="Your response">
                 </div>
+				<!-- <div class="form-group">
+                    <input class="form-control" type="text" name="comment[author]" placeholder="Your Name">
+                </div> -->
                 <div class="form-group">
-                    <button class="btn btn-lg btn-primary btn-block">Submit Comment!</button>
+                    <button class="btn btn-lg btn-primary">Submit Comment!</button>
                 </div>
             </form>
-            <a href="/review">Go Back To Review Page</a>
-        </div>
+
+        </h1>
+	<div class="space_add"></div>
+        <a class="btn btn-danger bth-large" href="/review">Back To Review Page</a>
+        <div class="space_add"></div>
 </div>
 
 <% include ../partials/footer %>

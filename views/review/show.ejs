@@ -4,57 +4,59 @@
         <div class="space_add"></div>
         <div class="well well-sm text_center">
             <h3>
-                <span>Customer Review: "</span>
-                <%= review.reviewTitle %>
-                    <span> "</span>
+                Customer Review
             </h3>
         </div>
         <div class="space_add"></div>
 
         <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6">
                 <img src="<%= review.image %>" class="img_cafe">
                 <div class="space_add"></div>
             </div>
-            <div div class="col-lg-8 col-md-6 col-sm-6">
+            <div div class="col-lg-9 col-md-6 col-sm-6">
                 <div class="well well-sm">
-                    <h4>
-                        <span>Star Rating: </span>
-                        <%= review.star %>
-                    </h4>
-                </div>
-
-                <div class="well well-sm">
-                    <h4>
+                    <h5>
+                        <span class="text-primary pull-left">
+                            <strong>"<%= review.reviewTitle %>"</strong>
+                        </span>
+                        <span class="pull-right">
+                            <span>Star Rating: </span>
+                            <%= review.star %>
+                        </span>
+                    </h5>
+                    <div class="space_add_small"></div>
+                    <h5>
                         <%= review.review %>
-                    </h4>
+                    </h5>
+                    <h5 class="text_italic"> 
+                        <span>Reviewed by: </span><%= review.author.username %></h5>
                 </div>
-
-                <div class="space_add"></div>
-                <a class="btn btn-primary bth-large" href="/review">Back To Review Page</a>
+				
+			<!-- 				 -->
+				<div class="space_add_small"></div>
+                    <a class="btn btn-success" href="/review/<%= review._id %>/comment/new">Leave Response To This Review</a>
+				<div class="space_add_small"></div>
+				
+                <div class="well well-sm">
+                    <!-- 	Comment from other customers	 -->
+                    <div>
+                        <% review.comments.forEach(function(comment){ %>
+                            <h5>
+								<%= comment.text %>
+								<br><p class = "text_italic">
+								-<%= comment.author.username %>-
+                                </p>
+                            </h5>
+                            <%	}); %>
+                    </div>
+                </div>
                 <div class="space_add"></div>
 
             </div>
 
-            <!-- <div class="text_center">
-				<div class="space_add"></div>
-                <a class="btn btn-success" href="/review/<#%= review._id %>/comment/new">Add New Comment</a>
-            </div> -->
-            <!-- </div>
-        <div class="space_add"></div>
-
-        <!-- 	Comment from other customers	 -->
-            <!-- <div>
-            <#% review.comments.forEach(function(comment){ %>
-                <h4>
-                    <strong>
-                        <#%= comment.author %>
-                    </strong> -
-                    <#%= comment.text %>
-                </h4>
-                <#%	}); %>
-        </div>  -->
-
         </div>
 
-        <%include ../partials/footer %>
+    </div>
+
+    <%include ../partials/footer %>

@@ -49,6 +49,8 @@
 
 .img_cafe {
     width: 70%;
+	margin: auto;
+	padding: auto;
 }
 
 .img_carousel {
@@ -141,6 +143,10 @@ mark {
     padding-top: 30px;
 }
 
+.space_add_small {
+    padding-top: 15px;
+}
+
 .split {
     height: 100%;
     width: 50%;
@@ -174,8 +180,8 @@ mark {
     font-family: 'Raleway', sans-serif;
     text-align: left;
     color: #ffffff;
-	font-size: 1.2em; 
-	padding-left: 25%;
+	font-size: 1.1em; 
+	padding-left: 18%;
 	
 }
 
@@ -186,10 +192,14 @@ mark {
 	font-size: 2em;
 }
 
+.text_italic{
+	font-style: italic;
+}
+
 .text_link {
     font-family: 'Raleway', sans-serif;
     color: #ffffff;
-	font-size: 2.2em; 
+	font-size: 2.0em; 
 	
 }
 

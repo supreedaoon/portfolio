@@ -7,21 +7,24 @@ var data = [
         star:"5",
 		image: "https://drive.google.com/uc?id=1zQHFA3NbOqnS-zAWuUxIfrzNfUMjgMWZ",
 		reviewTitle: "Best weekend activity for families with kids", 
-        review:"We enjoy visiting this place every sunday morning and have a cup of coffe and a piece of cake there. The air was so fresh."
+        review:"We enjoy visiting this place every sunday morning and have a cup of coffe and a piece of cake there. The air was so fresh.",
+		author:{username:"Alice"}
         
     },
     {
         star:"3",
 		image: "https://drive.google.com/uc?id=1BaotcjchOtVHGx2quFmcyjRujATusrBR",
 		reviewTitle: "The farm was nice but the cafe was understaffed", 
-        review:"So many interesting things to see in farm but I had to wait 20 minutes for my lunch."
+        review:"So many interesting things to see in farm but I had to wait 20 minutes for my lunch.",
+		author:{username:"Leon"}
         
     },
     {
          star:"5",
 		image: "https://drive.google.com/uc?id=1q1K7fxkVooxqFfJqi-jhBT0VzJxDAywO",
 		reviewTitle: "Nice Coffee", 
-        review:"Perfect coffee for my afternoon. (Plus heart-shaped herb extract!!!)"
+        review:"Perfect coffee for my afternoon. (Plus heart-shaped herb extract!!!)",
+		author:{username:"Claire"}
         
     }
 ]
@@ -49,7 +52,7 @@ function seedDB(){
                         Comment.create(
                             {
                                 text: "This place is great, but I wish there was internet",
-                                author: "Homer"
+                                author: {username:"Homer"} 
                             }, function(err, comment){
                                 if(err){
                                     console.log(err);
