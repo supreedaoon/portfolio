@@ -267,8 +267,12 @@ mark {
             padding-top: 10%;
         }
 
-        .button_web {
+        
+		.button_web {
             background-color: white;
             color: rgba(0, 191, 255, 0.5);
             font-size: 1.2em;
         }
+
+        
+  
