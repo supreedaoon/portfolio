@@ -8,7 +8,7 @@
         }
 
 #mypoint{
-	background-color: #D3D3D3;
+	background-color: rgba(238, 130, 238, 0.5);
 }
 
 #landing{
@@ -17,6 +17,10 @@
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
+}
+
+#webstatus{
+	background-color: rgba(0, 191, 255, 0.5);
 }
 
 
@@ -189,13 +193,6 @@ mark {
 	
 }
 
-.text_description {
-    font-family: 'Raleway', sans-serif;
-    color: black;
-    text-align: center
-	font-size: 2em;
-}
-
 .text_italic{
 	font-style: italic;
 }
@@ -204,8 +201,14 @@ mark {
     font-family: 'Raleway', sans-serif;
     color: #ffffff;
 	font-size: 2.0em; 
-	
 }
+
+.text_status{
+	font-family: 'Raleway', sans-serif;
+    color: #ffffff;
+	font-size: 1.5em; 
+	text-align:center;
+		}
 
 .web {
     left: 0;
@@ -216,3 +219,56 @@ mark {
     font-size: 12px;
     color: #ffffff;
 }
+
+.text_demo {
+            color: white;
+            font-size: 1.2em;
+            font-family: 'Raleway', sans-serif;
+            text-align: center;
+        }
+
+        .well_demo {
+            background-color: white;
+            width: 60%;
+            margin: auto;
+            color: rgba(238, 130, 238, 0.5);
+            font-size: 1.2em;
+        }
+
+        .navbar_demo {
+            background-color: white;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .custom-toggler.navbar-toggler {
+            border-color: rgba(238, 130, 238, 0.5);
+            ;
+        }
+
+        .custom-toggler .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(238, 130, 238, 0.5)' stroke-width='2.5' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+
+        .text_table_head {
+            font-family: 'Raleway', sans-serif;
+            color: #ffffff;
+            font-size: 1.4em;
+            text-align: center;
+        }
+
+        .text_table_content {
+            font-family: 'Raleway', sans-serif;
+            color: #ffffff;
+            font-size: 1.2em;
+            text-align: center;
+        }
+
+        .space_add_10 {
+            padding-top: 10%;
+        }
+
+        .button_web {
+            background-color: white;
+            color: rgba(0, 191, 255, 0.5);
+            font-size: 1.2em;
+        }

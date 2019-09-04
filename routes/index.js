@@ -43,37 +43,41 @@ var products = [
 
 
 router.get("/", function(req,res){
-	res.render("landing.ejs");
+	res.render("intro/landing.ejs");
+});
+
+router.get("/webstatus", function(req,res){
+	res.render("intro/webstatus.ejs");
 });
 
 router.get("/mypoint", function(req,res){
-	res.render("mypoint.ejs");
+	res.render("intro/mypoint.ejs");
 });
 
 router.get("/sunshine", function(req,res){
-	res.render("home.ejs", {home_image:home_image});
+	res.render("general/home.ejs", {home_image:home_image});
 });
 
 router.get("/farm", function(req,res){
 	var farm_map = {name:"Map", image: "https://drive.google.com/uc?id=16o1xgaJBcjtVGf82JKKwH7VQ22ixge9u"}
-	res.render("farm.ejs", {farm_map:farm_map});
+	res.render("general/farm.ejs", {farm_map:farm_map});
 });
 
 router.get("/cafe", function(req,res){
-	res.render("cafe.ejs", {home_image:home_image});
+	res.render("general/cafe.ejs", {home_image:home_image});
 });
 
 router.get("/onlineorder", function(req,res){
-	res.render("onlineorder.ejs", {products:products});
+	res.render("general/onlineorder.ejs", {products:products});
 });
 
 router.get("/visit", function(req,res){
-	res.render("visit.ejs");
+	res.render("general/visit.ejs");
 });
 
 // show register form
 router.get("/signup", function(req, res){
-   res.render("signup.ejs"); 
+   res.render("general/signup.ejs"); 
 });
 //handle sign up logic
 router.post("/signup", [check('username')
@@ -85,13 +89,13 @@ router.post("/signup", [check('username')
     var newUser = new User({username: req.body.username});
 	const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    return res.render("signup.ejs");
+    return res.render("general/signup.ejs");
   }
 	
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);
-            return res.render("signup.ejs");
+            return res.render("general/signup.ejs");
         }
         passport.authenticate("local")(req, res, function(){
            res.redirect("/sunshine"); 
@@ -101,7 +105,7 @@ router.post("/signup", [check('username')
 
 //Log-In form
 router.get("/login", function(req, res){
-   res.render("login.ejs"); 
+   res.render("general/login.ejs"); 
 });
 //Handle Log-In Process
 router.post("/login", passport.authenticate("local", 
