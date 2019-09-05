@@ -21,7 +21,7 @@ router.get("/review/:id/comment/new", middleware.isLoggedIn, function(req,res){
 router.post('/review/:id/comment', middleware.isLoggedIn, function(req, res) {
     Review.findById(req.params.id, function(err, theReview) {
         if (err) {
-            console.log(err);
+            //console.log(err);
             res.redirect('/review');
         } else {
             Comment.create(req.body.comment, function(err, theComment) {
@@ -43,10 +43,10 @@ router.post('/review/:id/comment', middleware.isLoggedIn, function(req, res) {
 });
 
 //Form to edit cooment
-router.get("/review/:id/comment/:comment_id/edit", middleware.checkCommentOwnership, function(req, res){
+router.get("/review/:id/comment/:comment_id/edit", middleware.isLoggedIn, middleware.checkCommentOwnership, function(req, res){
    Comment.findById(req.params.comment_id, function(err, foundComment){
       if(err){
-          res.redirect("back");
+          res.redirect("/review");
       } else {
 		  Review.findById(req.params.id,function(err,foundReview){
 			   res.render("comment/edit.ejs", {review:foundReview, comment: foundComment});
@@ -60,7 +60,7 @@ router.get("/review/:id/comment/:comment_id/edit", middleware.checkCommentOwners
 router.put("/review/:id/comment/:comment_id", middleware.checkCommentOwnership, function(req, res){
    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
       if(err){
-          res.redirect("back");
+          res.redirect("review");
       } else {
           res.redirect("/review/" + req.params.id );
       }

@@ -36,7 +36,7 @@
                         <span>Reviewed by: </span>
                         <%= review.author.username %>
                     </h5>
-                    <% if(currentUser && review.author.id.equals(currentUser._id)){ %>
+                    <% if(currentUser && (review.author.id.equals(currentUser._id) || currentUser.isAdmin)){ %>
                         <a class="btn btn-xs btn-warning" href="/review/<%= review._id %>/edit">Edit</a>
                         <form class="button_row" action="/review/<%= review._id %>?_method=DELETE" method="POST">
                             <button class="btn btn-xs btn-danger">Delete</button>
@@ -61,7 +61,7 @@
                                         <p class="text_italic">-
                                             <%= comment.author.username %>-</p>
                                 </h5>
-                                <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                                <% if(currentUser && (comment.author.id.equals(currentUser._id)||currentUser.isAdmin)){ %>
                                     <a class="btn btn-xs btn-warning" href="/review/<%= review._id %>/comment/<%=comment._id %>/edit">Edit</a>
                                     <form class="button_row" action="/review/<%=review._id %>/comment/<%=comment._id %>?_method=DELETE" method="POST">
                                         <button class="btn btn-xs btn-danger">Delete</button>

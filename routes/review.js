@@ -49,8 +49,10 @@ router.get("/review/new", middleware.isLoggedIn, function(req,res){
 router.get("/review/:id", function(req,res){
 	
 	Review.findById(req.params.id).populate("comments").exec(function(err, theReview){
-		if(err){
-			console.log(err);
+		if(err || !theReview){
+			//console.log(err);
+			req.flash('error', 'Sorry, the review does not exist!');
+            return res.redirect('/review');
 		}else{
 			res.render("review/show.ejs", {review:theReview});
 		}
@@ -59,7 +61,7 @@ router.get("/review/:id", function(req,res){
 });
 
 //Form to edit review
-router.get("/review/:id/edit", middleware.checkReviewOwnership, function(req, res){
+router.get("/review/:id/edit",middleware.isLoggedIn, middleware.checkReviewOwnership, function(req, res){
     Review.findById(req.params.id, function(err, foundReview){
         res.render("review/edit.ejs", {review: foundReview});
     });

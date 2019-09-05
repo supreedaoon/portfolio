@@ -12,15 +12,15 @@
         </div>
 
         <div class="space_add"></div>
-        <div class="textbox_review">
+        <div class="textbox_review text_center">
 			<div class="space_add_small"></div>
-			<divv><h5 class = "text-danger">
-				<strong>For security reason, please do not use $ in review or review's title. </strong>
+			<divv><h5 class = "text-danger pull-right">
+				*Characters: $, {, &&, || are forbidden
 				</h5></divv>
 			<div class="space_add_small"></div>
             <form action="/review" method="POST">
                 <div class="form-group">
-                    <span>Please select number of star:</span>
+                    <div>Please select number of star:</div>
                     <input type="radio" name="star" value="0"> 0
                     <input type="radio" name="star" value="1"> 1
                     <input type="radio" name="star" value="2"> 2
@@ -44,7 +44,9 @@
 				<div class="form-group">
                     <input class="form-control" type="text" name="reviewContent" placeholder="Review">
                 </div>
-				<button class="btn btn-primary btn-block button_long">Submit Review</button>
+				<div class="form-group">
+                    <button class="btn btn-sm btn-primary">Submit Review</button>
+                </div>
             </form>
         </div>
         <div class="space_add"></div>

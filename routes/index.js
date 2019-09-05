@@ -82,22 +82,24 @@ router.get("/signup", function(req, res){
 //handle sign up logic
 router.post("/signup", [check('username')
   .isAlphanumeric()
-  .isLength({ min: 1, max: 5 }), check('password')
+  .isLength({ min: 1, max: 20 }), check('password')
   .isAlphanumeric()
   .isLength({ min: 1, max: 5 })], function(req, res){
 	
     var newUser = new User({username: req.body.username});
 	const errors = validationResult(req)
   if (!errors.isEmpty()) {
-    return res.render("general/signup.ejs");
+	  req.flash("error", "Invalid Username or Password");
+    return res.redirect("/signup");
   }
 	
     User.register(newUser, req.body.password, function(err, user){
         if(err){
-            console.log(err);
-            return res.render("general/signup.ejs");
+            req.flash("error", err.message);
+            return res.redirect("/signup");
         }
         passport.authenticate("local")(req, res, function(){
+			 req.flash("success", "Successfully Signed Up! Welcome " + req.body.username + " to our community");
            res.redirect("/sunshine"); 
         });
     });
@@ -111,21 +113,17 @@ router.get("/login", function(req, res){
 router.post("/login", passport.authenticate("local", 
     {
         successRedirect: "/sunshine",
-        failureRedirect: "/login"
+        failureRedirect: "/login",
+		failureFlash: true
     }), function(req, res){
 });
 
 //Log-Out
 router.get("/logout", function(req, res){
    req.logout();
+	req.flash("success", "Signed out successfully");
    res.redirect("/sunshine");
 });
 
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
 
 module.exports = router;
