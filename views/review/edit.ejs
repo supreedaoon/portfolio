@@ -13,7 +13,7 @@
 				<strong>For security reason, please do not use $ in review or review's title. </strong>
 				</h5></divv>
 			<div class="space_add_small"></div>
-            <form action = "/review/<%= review._id %>?_method=PUT" method="POST">
+            <form action = "/review/<%= review._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <span>Please select number of star again:</span>
                     <input type="radio" name="star" value="0"> 0
@@ -24,18 +24,14 @@
                     <input type="radio" name="star" value="5"> 5
                 </div>
 				<div class="form-group">
-                    <input class="form-control" type="text" name="review[reviewTitle]" value="<%= review.reviewTitle %>">
-                </div>
-				<div>
-					<h5 class = "text-info">
-						<strong>===An option to upload image directly from device would be released on 07.09.19===</strong>
-					</h5>
-				</div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="review[image]" value="<%= review.image %>">
+                    <input class="form-control" type="text" name="reviewTitle" value="<%= review.reviewTitle %>">
                 </div>
 				<div class="form-group">
-                    <input class="form-control" type="text" name="review[reviewContent]" value="<%= review.reviewContent %>">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept="image/*">
+                </div>
+				<div class="form-group">
+                    <input class="form-control" type="text" name="reviewContent" value="<%= review.reviewContent %>">
                 </div>
 				<button class="btn btn-primary btn-block button_long">Confirm Edit</button>
             </form>

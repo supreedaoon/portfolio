@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var reviewSchema = new mongoose.Schema({
 	star: String,
 	image:String,
+	imageId: String,
 	reviewTitle:String,
 	reviewContent:String,
 	author: {

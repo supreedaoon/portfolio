@@ -70,15 +70,6 @@ app.use(ReviewRoutes);
 app.use(commentRoutes);
 app.use(indexRoutes);
 
-
-// //Check if user actually log-in.
-// function isLoggedIn(req, res, next){
-//     if(req.isAuthenticated()){
-//         return next();
-//     }
-//     res.redirect("/login");
-// }
-
 const port = process.env.PORT || 3000;
 
 app.listen(port, process.env.IP, function(){

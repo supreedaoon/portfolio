@@ -18,7 +18,7 @@
 				*Characters: $, {, &&, || are forbidden
 				</h5></divv>
 			<div class="space_add_small"></div>
-            <form action="/review" method="POST">
+            <form action="/review" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                     <div>Please select number of star:</div>
                     <input type="radio" name="star" value="0"> 0
@@ -31,15 +31,9 @@
 				<div class="form-group">
                     <input class="form-control" type="text" name="reviewTitle" placeholder="Title of your review">
                 </div>
-				<div>
-					
-				
-					<h5 class = "text-info">
-						<strong>===An option to upload image directly from device would be released on 07.09.19===</strong>
-					</h5>
-				</div>
-                <div class="form-group">
-                    <input class="form-control" type="text" name="image" placeholder="Image URL">
+				<div class="form-group">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
                 </div>
 				<div class="form-group">
                     <input class="form-control" type="text" name="reviewContent" placeholder="Review">
