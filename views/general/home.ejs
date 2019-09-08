@@ -6,20 +6,20 @@
 
         <header class="jumbotron">
             <div class="container">
-                <h1>
+                <h1 class = "display-5">
                     Sunshine Farm & Cafe
                 </h1>
 
-                <p>
-                    Organic Farm in the northern of Thailand
-                </p>
+                <h2>
+                   <small>Organic Farm in the northern of Thailand</small> 
+                </h2>
             </div>
 
         </header>
 
         <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
-            <ol class="carousel-indicators">
+            <ul class="carousel-indicators">
                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 
                 <% for (var i = 1; i < home_image.length; i++) { %> 
@@ -29,18 +29,19 @@
                 <!-- <li data-target="#myCarousel" data-slide-to="1"></li>
                 <li data-target="#myCarousel" data-slide-to="2"></li> -->
 
-            </ol>
+            </ul>
 			
 			<div class="carousel-inner">
 			<% var first = 0; %>
                     <% home_image.forEach(function(farm_image){ %>
                         <% if (first == 0) { %>
-                            <div class="item active">
+                            <div class="carousel-item active">
 
-                                <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" class="img_carousel">
+                                <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" class="img_carousel" >
+								<!-- class="img_carousel" -->
                             </div>
                         <% }else{ %>
-                                <div class="item">
+                                <div class="carousel-item">
                                     <img src="<%= farm_image.image %>" alt="<%= farm_image.name %>" class="img_carousel">
                                 </div>
                             <% } %>
@@ -49,18 +50,24 @@
 			</div>
 			
             <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-                <span class="sr-only">Next</span>
-            </a>
+            <!-- <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    <span class="sr-only">Previous</span>
+</a>
+<a class="right carousel-control" href="#myCarousel" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+    <span class="sr-only">Next</span>
+</a> -->
+			
+			<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
         </div>
 		
-		<div class = "space_add"></div>
-		<div class = "well well-sm">
+		<div class = "well well-sm pt-3">
 			<h4 class = "text_center">
 				Welcome to Sunshine Farm & Cafe, the first organic farm in the region. Please click images below to learn more about us.  
 			</h4>
@@ -69,8 +76,8 @@
 	<!-- Link to other pages 		 -->
         <div class="row row_thumbnail">
             
-                <div class="col-md-6 col-sm-2">
-                    <div class="thumbnail">
+                <div class="col-md-6 col-sm-6">
+                    <div class="img-thumbnail">
 						<a href="/farm">
                         <img src="https://drive.google.com/uc?id=1nNbAKfJOpQHkaMNCJPbC2UN7YIhhDKpF" class = "img_thumbnail">
 						<div class="caption text-center">
@@ -81,8 +88,8 @@
 						</a>
                     </div>
                 </div>
-				<div class="col-md-6 col-sm-2">
-                    <div class="thumbnail">
+				<div class="col-md-6 col-sm-6">
+                    <div class="img-thumbnail">
 						<a href="/cafe">
                         <img src="https://drive.google.com/uc?id=1jnr2CYQ3TtM7vv8MBlYv3EtL-BZyc4nm" class = "img_thumbnail">
 						<div class="caption text-center">
@@ -94,9 +101,9 @@
                     </div>
                 </div>
 		</div>
-		<div class="row row_thumbnail">
-				<div class="col-md-6 col-sm-2">
-                    <div class="thumbnail">
+		<div class="row row_thumbnail pb-3">
+				<div class="col-md-6 col-sm-6">
+                    <div class="img-thumbnail">
 						<a href="/onlineorder">
                         <img src="https://drive.google.com/uc?id=10qSzWJu6zEAxqupOy-mtt1EM6poz3Ham" class = "img_thumbnail">
 						<div class="caption text-center">
@@ -107,8 +114,8 @@
 						</a>
                     </div>
                 </div>
-				<div class="col-md-6 col-sm-2">
-                    <div class="thumbnail">
+				<div class="col-md-6 col-sm-6">
+                    <div class="img-thumbnail">
 						<a href="/visit">
                         <img src="https://drive.google.com/uc?id=1M7XhHs8f84c-4RkDxlpP42_jEHSm2R8a" class = "img_thumbnail">
 						<div class="caption text-center">
@@ -120,9 +127,12 @@
                     </div>
                 </div>
 				
-
+		
         </div>
 
     </div>
+
+	
+</div>
 
     <%include ../partials/footer %>

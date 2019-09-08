@@ -1,26 +1,24 @@
 <% include ../partials/header %>
 
-    <div class="container main_container">
-        <div class="well well-sm text_center">
-            <h2>
+    <div class="container main_container pt-2 pb-5">
+        <div class="card card-body bg-light p-4 mt-1">
+            <h1 class = "display-5">
                 Add your review
+            </h1>
+            <h2>
+                <small>Your valued opinion is very important for our improvement</small>
             </h2>
-            <p>
-                Your valued opinion is very important for our improvement
-            </p>
 
         </div>
 
-        <div class="space_add"></div>
-        <div class="textbox_review text_center">
-			<div class="space_add_small"></div>
-			<divv><h5 class = "text-danger pull-right">
-				*Characters: $, {, &&, || are forbidden
-				</h5></divv>
-			<div class="space_add_small"></div>
-            <form action="/review" method="POST" enctype="multipart/form-data">
-                <div class="form-group">
-                    <div>Please select number of star:</div>
+        <div class="textbox_review text_center py-3">
+			<divv><h6 class = "text-danger float-right">
+				<strong>*Characters: $, {, &&, || are forbidden</strong>
+	
+				</h6></divv>
+			<form action="/review" method="POST" enctype="multipart/form-data">
+                <div class="form-group pt-2 float-left">
+                    <span>Please select number of star:</span>
                     <input type="radio" name="star" value="0"> 0
                     <input type="radio" name="star" value="1"> 1
                     <input type="radio" name="star" value="2"> 2
@@ -28,24 +26,22 @@
                     <input type="radio" name="star" value="4"> 4
                     <input type="radio" name="star" value="5"> 5
                 </div>
-				<div class="form-group">
+				<div class="form-group pt-2">
                     <input class="form-control" type="text" name="reviewTitle" placeholder="Title of your review">
                 </div>
-				<div class="form-group">
+				<div class="form-group pt-2 float-left">
                     <label for="image">Image</label>
                     <input type="file" id="image" name="image" accept="image/*" required>
                 </div>
-				<div class="form-group">
+				<div class="form-group pt-2">
                     <input class="form-control" type="text" name="reviewContent" placeholder="Review">
                 </div>
-				<div class="form-group">
+				<div class="form-group py-2">
                     <button class="btn btn-sm btn-primary">Submit Review</button>
                 </div>
             </form>
         </div>
-        <div class="space_add"></div>
-        <a class="btn btn-danger bth-large" href="/review">Back To Review Page</a>
-        <div class="space_add"></div>
+        <a class="btn btn-danger btn-sm my-3" href="/review">Back To Review Page</a>
     </div>
 
     <%include ../partials/footer %>

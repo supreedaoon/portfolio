@@ -1,51 +1,48 @@
 <%include ../partials/header %>
 
     <div class="container main_container">
-
         <header class="jumbotron">
             <div class="container">
-                <h1>
+               <h1 class="display-5">
                     Product Online Order
                 </h1>
-
-                <p>
-                    Stay at home and let your favourite courier deliver healthy food right at your door step
-                </p>
+				<h2>
+                    <small>Stay at home and let your favourite courier deliver healthy food right at your door step</small>
+                </h2>
             </div>
-
         </header>
 		
-		<div class = "well well-sm text-danger pad_left">
-			<h4>
+		<div class="card card-body bg-danger text-center py-3 ">
+			<h5 class = "text_demo">
 				We currently do not offer online order due to staff shortage. 
 				Numbers of our staffs are on vacation with family members, who came back as the result of the 'Blip'. 
 				We apologize for the inconvenience this may cause. 
-			</h4>
+			</h5>
 		</div>
 
-        <div class="row row_simple">
+        <div class="row">
             <% products.forEach(function(product){ %>
 
                 <div class="col-md-3 col-sm-6">
-                    <div class="thumbnail">
-                        <img src="<%= product.image %>" class = "img_thumbnail">
+                    <div class="img-thumbnail py-2 my-3">
+                        <img src="<%= product.image %>" class = " img_thumbnail">
                         <div class = "ref_link">
                             <a href='http://www.freepik.com'>
                                 <%= product.att %>
                             </a>
                         </div>
                         <div class="caption text-center">
-                            <h5>
+                            <h6>
                                 <%= product.name %>
-                            </h5>
+                            </h6>
                         </div>
 						
-							<div class = "row row_order_display">
+							<div class = "row pl-2">
 								<% var amountDisplayId = "amountDisplay" + product.id %>
-                                    <div id=<%= amountDisplayId%>;  class= "text-center">
-										<h5>
+                                    <div id=<%= amountDisplayId%>;  class= "text-center px-3 pt-1">
+										<h6>
                                         <%= product.order %>
-										</h5>	
+										</h6>	
                                     </div>
 								<div class = "button_order">
 									<% var addItemId = "addItem" + product.id%>

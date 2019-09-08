@@ -1,82 +1,77 @@
 <%include ../partials/header %>
 
-    <div class="container main_container">
-        <div class="space_add"></div>
-        <div class="well well-sm text_center">
-            <h3>
+    <div class="container main_container pt-2">
+        <div class="card card-body bg-light p-4 mt-1">
+            <h1 class="display-5">
                 Customer Review
-            </h3>
+            </h1>
         </div>
-        <div class="space_add"></div>
 
-        <div class="row">
+        <div class="row py-3">
             <div class="col-lg-3 col-md-6 col-sm-6">
-                <img src="<%= review.image %>" class="img_cafe">
-                <div class="space_add"></div>
+                <img src="<%= review.image %>" class="img-rounded float-right img_cafe">
             </div>
             <div div class="col-lg-9 col-md-6 col-sm-6">
-                <div class="well well-sm">
-					<div>
-                    <h5>
-                        <span class="text-primary pull-left">
-                            <strong>"
-                                <%= review.reviewTitle %>"</strong>
-                        </span>
-                        <span class="pull-right">
-                            <span>Star Rating: </span>
-                            <%= review.star %>
-                        </span>
-                    </h5>
-					</div>
-                    <div class="space_add_small"></div>
-                    <h5>
+                <div class="card card-body bg-light py-2 my-2">
+                    <div>
+                        <h5 class = "display-5 pt-2">
+                            <span class="text-primary float-left">
+                                <strong>"<%= review.reviewTitle %>"</strong>
+                            </span>
+                            <span class="text-warning float-right">
+                                <span>Star Rating: </span>
+                                <%= review.star %>
+                            </span>
+                        </h5>
+                    </div>
+                    <h6 class = "pt-3">
                         <%= review.reviewContent %>
-                    </h5>
-                    <h5 class="text_italic">
-                        <span>Reviewed by: </span>
-                        <%= review.author.username %>
-                    </h5>
+                    </h6>
+                    <h6 class="text_italic py-2 text-muted">
+                        <small><span>Reviewed by: </span>
+                        <%= review.author.username %></small>
+                    </h6>
+					
+					<div>
                     <% if(currentUser && (review.author.id.equals(currentUser._id) || currentUser.isAdmin)){ %>
                         <a class="btn btn-xs btn-warning" href="/review/<%= review._id %>/edit">Edit</a>
                         <form class="button_row" action="/review/<%= review._id %>?_method=DELETE" method="POST">
                             <button class="btn btn-xs btn-danger">Delete</button>
                         </form>
                         <% }%>
-					<div class="space_add_small"></div>
+					
+						
+					</div>
                 </div>
 
                 <!-- 				 -->
-                <div class="space_add_small"></div>
-                <a class="btn btn-success" href="/review/<%= review._id %>/comment/new">Leave Response To This Review</a>
-                <div class="space_add_small"></div>
+                <a class="my-3 btn btn-success" href="/review/<%= review._id %>/comment/new">Leave Response To This Review</a>
 
-                <div class="well well-sm">
+                <div class="card card-body bg-light p-2">
                     <!-- 	Comment from other customers	 -->
-                    <div>
+                    <div class = "py-3">
                         <% review.comments.forEach(function(comment){ %>
                             <div>
-                                <h5>
+                                <h6 class = "pt-2">
                                     <%= comment.text %>
                                         <br>
                                         <p class="text_italic">-
-                                            <%= comment.author.username %>-</p>
-                                </h5>
+                                            <small><%= comment.author.username %>-</small></p>
+                                </h6>
+								<div class = "pt-2">
                                 <% if(currentUser && (comment.author.id.equals(currentUser._id)||currentUser.isAdmin)){ %>
                                     <a class="btn btn-xs btn-warning" href="/review/<%= review._id %>/comment/<%=comment._id %>/edit">Edit</a>
                                     <form class="button_row" action="/review/<%=review._id %>/comment/<%=comment._id %>?_method=DELETE" method="POST">
                                         <button class="btn btn-xs btn-danger">Delete</button>
                                     </form>
                                     <% } %>
+								</div>
                             </div>
                             <%	}); %>
                     </div>
                 </div>
-                <div class="space_add"></div>
-
-            </div>
-
+			</div>
         </div>
-
     </div>
 
     <%include ../partials/footer %>

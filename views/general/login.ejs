@@ -1,25 +1,31 @@
 <%include ../partials/header %>
 
-    <div class="container main_container">
-        
-            <div class="well well-large">
-                <h2>
-                    Log In
-                </h2>
+    <div class="container main_container pt-2">
 
-                <h4>
-                    Your authentication would be thoroughly inspected. You do not need to provide us social media account information, because we can find it by ourselves.    
-                </h4>
-                
-            
-		</div>
+        <div class="card card-body bg-light p-4 mt-1">
+            <h1 class="display-5">
+                Log In
+            </h1>
 
-        <div class="well well-sm">
-            <form action="/login" method="POST">
-    <input type="text" name="username" placeholder="username">
-    <input type="password" name="password" placeholder="password">
-    <input class= "btn btn-primary btn-sm" type="submit" value="Login!">
-</form>
+            <h2>
+                <small>Your authentication would be thoroughly inspected. You do not need to provide us social media account information, because we can find it by ourselves.</small>
+            </h2>
+
         </div>
-</div>
-        <%include ../partials/footer %>
+
+        <div class="p-5">
+            <form action="/login" method="POST">
+				<div class="form-group">
+                <input class="form-control" type="text" name="username" placeholder="Username">
+				</div>
+				<div class="form-group">
+                <input class="form-control" type="password" name="password" placeholder="Password">
+				</div>
+				<div class="form-group">
+                <input class="btn btn-primary btn-sm btn-block" type="submit" value="Login!">
+				</div>
+            </form>
+        </div>
+		
+    </div>
+    <%include ../partials/footer %>

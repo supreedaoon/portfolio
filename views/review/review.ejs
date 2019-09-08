@@ -3,13 +3,13 @@
     <div class="container main_container">
         <header class="jumbotron">
             <div class="container">
-                <h1>
+                <h1 class = "display-5">
                     Review
                 </h1>
 
-                <p>
-                    Experience from our visitors and online customers
-                </p>
+                <h2>
+                    <small>Experience from our visitors and online customers</small>
+                </h2>
 
                 <p>
 					<a class = "btn btn-primary bth-large" href = "/review/new">Add new review</a>
@@ -19,11 +19,11 @@
         </header>
 
                 <!-- 	Display Reviews	 -->
-                <div class="row row_simple">
+                <div class="row">
             <% review_image.forEach(function(review){ %>
 
                 <div class="col-md-3 col-sm-6">
-                    <div class="thumbnail">
+                    <div class="img-thumbnail py-2 my-3">
                         <img src="<%= review.image %>" class = "img_thumbnail">
                         <div class="caption text-center">
                             <h5>

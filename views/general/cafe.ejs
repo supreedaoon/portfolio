@@ -1,69 +1,68 @@
 <%include ../partials/header %>
 
-    <div class="container main_container">
+    <div class="container main_container pb-5">
 
         <header class="jumbotron">
             <div class="container">
-                <h1>
+                <h1 class="display-5">
                     Sunshine Cafe
                 </h1>
-
-                <p>
-                    Food and drink from fresh organic products
-                </p>
+                <h2>
+                    <small>Food and drink from fresh organic products</small>
+                </h2>
             </div>
 
         </header>
-		
-		
-		<div class = "well well-sm text-center" >
-			<h3>
-				All foods and drinks contain healthy level of heart-shaped herb extract.
-			</h3>
-		</div>
-		
 
-        
-            <%var alternate = true;%>
-                <% home_image.forEach(function(farm_image){ %>
-                    <% if (farm_image.tag == "cafe"){ %>
-                        <% if (alternate == true ){ %>
-							<div class="container">
-							<div class = "space_add"></div>
-                            <div class="row">
-                				<div class="col-lg-4 col-md-6 col-sm-6" >
-                                    <img src="<%= farm_image.image %>" class = "img_cafe">
+        <div class="card card-body bg-success text-center py-3 ">
+            <h5 class = text_demo>
+                All foods and drinks contain healthy level of heart-shaped herb extract.
+            </h5>
+        </div>
+
+        <%var alternate = true;%>
+            <% home_image.forEach(function(farm_image){ %>
+                <% if (farm_image.tag == "cafe"){ %>
+                    <% if (alternate == true ){ %>
+                        <div class="container">
+                            <div class="row pt-3">
+                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                    <img src="<%= farm_image.image %>" class="img-rounded float-right img_cafe">
                                 </div>
-                				<div div class="col-lg-8 col-md-6 col-sm-6 text_bg_cafe">
-                    				<h4 class = "text_cafe">
-									<%= farm_image.name %>	
-									</h4>
-                				</div>
-							</div>
-            				</div>
-                    
+                                <div div class="col-lg-8 col-md-6 col-sm-6">
+                                    <h4 class="text_cafe">
+										<div class="card card-body bg-light">
+    <%= farm_image.name %>
+</div>
+                                        
+                                    </h4>
+                                </div>
+                            </div>
+                       
+
                         <% } else {%>
-							<div class="container">
-								<div class = "space_add"></div>
-                            <div class="row" >
-                				
-                				<div div class="col-lg-8 col-md-6 col-sm-6 text_bg_cafe">
-                    				<h4 class = "text_cafe">
-										<%= farm_image.name %>
-									</h4>
-                				</div>
-								<div class="col-lg-4 col-md-6 col-sm-6">
-                                    <img src="<%= farm_image.image %>"  class="img-rounded img_cafe">
-                                </div>
-							</div>
-            				</div>
-							
-						<% } %>
-						<% alternate = !alternate; %>
-                    <% } %>
-                <% }); %>
-				<div class = "space_add" ></div>
-				<div class = "space_add" ></div>
-		</div>			
+                            
 
-        <%include ../partials/footer %>
+                                <div class="row pt-3">
+
+                                    <div div class="col-lg-8 col-md-6 col-sm-6">
+                                        <h4 class="text-right text_cafe">
+                                           <div class="card card-body bg-light">
+    <%= farm_image.name %>
+</div>
+                                        </h4>
+                                    </div>
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <img src="<%= farm_image.image %>" class="img-rounded float-left img_cafe">
+                                    </div>
+                                </div>
+                            
+
+                            <% } %>
+                                <% alternate = !alternate; %>
+                                    <% } %>
+                                        <% }); %>
+						</div>
+    </div>
+
+    <%include ../partials/footer %>
