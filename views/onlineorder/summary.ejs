@@ -2,25 +2,64 @@
 
     <div class="container main_container">
         <div class="card card-body bg-light p-4 mt-1">
-                <h1 class = "display-5">
-                    Order Summary
-                </h1>
-		</div>
+            <h1 class="display-5">
+                Order Summary
+            </h1>
+        </div>
+
+        <div class="container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Remove</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+					<% var total = 0; %>
+                    <% user.orders.forEach(function(order){ %>
+                        <tr>
+                            <td>
+                                <%= order.itemName %>
+                            </td>
+                            <td>
+                                <%= order.itemPrice %>
+								<% total += order.itemPrice; %>
+                            </td>
+                            <td>
+                                <form action="/onlineorder/orders/<%=order._id %>?_method=DELETE" method="POST">
+                                        <button class="btn btn-xs btn-danger">Remove</button>
+                                    </form>
+                            </td>
+                        </tr>
+                        <% }); %>
+					
+<!-- 						Sum at Table Footer -->
+						<tr>
+							<td>
+								Total
+							</td>
+							<td>
+								<%= total %>
+							</td>
+							
+						</tr>
+                </tbody>
+            </table>
+        </div>
 		
-		<div>
-			<!-- user.orders.forEach() -->
-			
-			 <% listOrder.forEach(function(order){ %>
-				<h4>
-					<%= order.itemName %>
-				</h4>
-				<h4>
-					<%= order.itemPrice %>
-				</h4>
-			<% console.log(typeof order.itemPrice) %>
-			<% }); %>
+		<div class = "my-3">
+			<div>
+				<a class="btn btn-primary btn-sm" href="/onlineorder">Back To Shopping</a>
+			</div>
+			<div class = "float-right">
+				<form action="/onlineorder/orders?_method=DELETE" method="POST">
+                                        <button class="btn btn-xs btn-danger">Remove</button>
+                                    </form>
+			</div>
 		</div>
-</div>
+    </div>
 
-<%include ../partials/footer %>
-
+    <%include ../partials/footer %>

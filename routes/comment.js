@@ -24,7 +24,7 @@ router.post('/review/:id/comment', middleware.isLoggedIn, function(req, res) {
             //console.log(err);
             res.redirect('/review');
         } else {
-            Comment.create(req.body.comment, function(err, theComment) {
+			Comment.create(req.body.comment, function(err, theComment) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -35,7 +35,7 @@ router.post('/review/:id/comment', middleware.isLoggedIn, function(req, res) {
                     theComment.save();
                     theReview.comments.push(theComment);
                     theReview.save();
-                    res.redirect('/review/' + theReview._id);
+					res.redirect('/review/' + theReview._id);
                 }
             });
         }

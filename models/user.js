@@ -5,7 +5,6 @@ var UserSchema = new mongoose.Schema({
     username: String,
     password: String,
 	isAdmin: {type: Boolean, default: false},
-// 	one user with one basket
 	orders: [
       {
          type: mongoose.Schema.Types.ObjectId,

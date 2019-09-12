@@ -10,7 +10,6 @@ var express 	= require("express"),
 	Review 		= require("./models/review"),
 	Comment		= require("./models/comment"),
 	User        = require("./models/user"),
-	Basket        = require("./models/basket"),
 	Order        = require("./models/order"),
 	check		= require('express-validator');
 

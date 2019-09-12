@@ -2,7 +2,6 @@ var express 	= require("express");
 var router  	= express.Router();
 var passport 	= require("passport");
 var User 		= require("../models/user");
-var Basket		= require("../models/basket");
 var Order		= require("../models/order");
 var middleware 	= require('../middleware');
 
@@ -76,27 +75,23 @@ router.get("/onlineorder", function(req,res){
 });
 
 router.get("/onlineorder/summary", middleware.isLoggedIn, function(req,res){
-	var listOrder = [];
-	 req.user.orders.forEach( function(order){
-		
-		 Order.findById(order, function (err, foundOrder){
-			if(err){
-				console.log(err);
-				res.redirect("/onlineorder");
-			}
-			// console.log(foundOrder);
-			listOrder.push({itemName : foundOrder.itemName, itemIndex : foundOrder.itemIndex, itemPrice: foundOrder.itemPrice});
-			// go to summary when all items are pushed 
-// 			we might be able to use promise in this case.  			
-			 if(listOrder.length == req.user.orders.length){		 
-	res.render("onlineorder/summary.ejs", {listOrder:listOrder});
-			 }
-		});
-	});
+	
+	//if possible: check if we can use req.user directly
+	 User.findById(req.user._id)
+	 .populate("orders")
+	 .exec(function(err, user) {
+	 if (err || !user) {
+	 req.flash('error', 'Sorry, this user does not exist!');
+	 return res.redirect('/onlineorder');
+	 } else {
+	 res.render('onlineorder/summary.ejs', { user: user });
+	 }
+	 });
+	
+	 
 });
 
 router.post("/onlineorder", middleware.isLoggedIn, function(req,res){
-	console.log(req.body);
 	var itemIndex = req.body.index;
 			var itemName = products[parseInt(itemIndex)].name;
 			var itemPrice = products[parseInt(itemIndex)].price;
@@ -106,13 +101,38 @@ router.post("/onlineorder", middleware.isLoggedIn, function(req,res){
                     console.log(err);
                 } else {
                     
-                    order.save();
-					req.user.orders.push(order);
-                    req.user.save();
-					
+                   User.findById(req.user._id, function(err,user){
+					user.orders.push(order);
+                    user.save();
 					res.redirect("onlineorder/summary");
+				   });
+					
                 }
             });
+});
+router.delete("/onlineorder/orders", middleware.isLoggedIn, function(req, res){
+    //findByIdAndRemove
+	 User.findById(req.user._id, function(err, user){
+		 Order.deleteMany({ _id: { $in: user.orders } }, err => {
+                if (err) {
+                    console.log(err);
+                    res.redirect('/onlineorder');
+                }
+            });
+		 res.redirect('/onlineorder/summary');
+	 });
+		
+});
+
+router.delete("/onlineorder/orders/:order_id", middleware.isLoggedIn, function(req, res){
+    //findByIdAndRemove
+    Order.findByIdAndRemove(req.params.order_id, function(err){
+       if(err){
+           res.redirect("back");
+       } else {
+           res.redirect("/onlineorder/summary");
+       }
+    });
 });
 
 router.get("/onlineorder/:index", function(req,res){
