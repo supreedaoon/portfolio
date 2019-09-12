@@ -4,7 +4,7 @@
         <header class="jumbotron">
             <div class="container">
                <h1 class="display-5">
-                    Product Online Order
+                    Products Online Order
                 </h1>
 				<h2>
                     <small>Stay at home and let your favourite courier deliver healthy food right at your door step</small>
@@ -12,12 +12,14 @@
             </div>
         </header>
 		
-		<div class="card card-body bg-danger text-center py-3 ">
-			<h5 class = "text_demo">
+		<div class="card card-body bg-danger text-center text-white py-3 ">
+			<h6 class = "display-6">
 				We currently do not offer online order due to staff shortage. 
+				<br>
 				Numbers of our staffs are on vacation with family members, who came back as the result of the 'Blip'. 
+				<br>
 				We apologize for the inconvenience this may cause. 
-			</h5>
+			</h6>
 		</div>
 
         <div class="row">
@@ -33,13 +35,14 @@
                         </div>
                         <div class="caption text-center">
                             <h6>
-                                <%= product.name %>
+                                <strong><%= product.name %></strong>
                             </h6>
-                        </div>
-						<!-- 	Button with product ID -hard coded - from passed array.					 -->
+							<!-- 	Button with product ID -hard coded - from passed array.					 -->
 						<div>
-							<a class="btn btn-primary bth-small" href="/onlineorder/<%= product.index %>">Order</a>
+							<a class="btn btn-primary btn-xs" href="/onlineorder/<%= product.index %>">View Product</a>
 						</div>
+                        </div>
+						
 							
                     </div>
                 </div>

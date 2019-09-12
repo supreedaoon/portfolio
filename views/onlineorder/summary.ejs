@@ -1,6 +1,6 @@
 <%include ../partials/header %>
 
-    <div class="container main_container">
+    <div class="container main_container pb-3">
         <div class="card card-body bg-light p-4 mt-1">
             <h1 class="display-5">
                 Order Summary
@@ -8,58 +8,83 @@
         </div>
 
         <div class="container">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Price</th>
-                        <th>Remove</th>
-                    </tr>
-                </thead>
 
-                <tbody>
-					<% var total = 0; %>
-                    <% user.orders.forEach(function(order){ %>
-                        <tr>
-                            <td>
-                                <%= order.itemName %>
-                            </td>
-                            <td>
-                                <%= order.itemPrice %>
-								<% total += order.itemPrice; %>
-                            </td>
-                            <td>
-                                <form action="/onlineorder/orders/<%=order._id %>?_method=DELETE" method="POST">
-                                        <button class="btn btn-xs btn-danger">Remove</button>
-                                    </form>
-                            </td>
-                        </tr>
+            <% var total = 0; %>
+                <% user.orders.forEach(function(order){ %>
+                    <% total += order.itemPrice; %>
                         <% }); %>
-					
-<!-- 						Sum at Table Footer -->
-						<tr>
-							<td>
-								Total
-							</td>
-							<td>
-								<%= total %>
-							</td>
-							
-						</tr>
-                </tbody>
-            </table>
+
+                            <% if (total != 0) {%>
+
+                                <table class="table py-3">
+                                    <thead>
+                                        <tr>
+                                            <th>Product</th>
+                                            <th>Price</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <% user.orders.forEach(function(order){ %>
+                                            <tr>
+                                                <td>
+                                                    <%= order.itemName %>
+                                                </td>
+                                                <td>
+                                                    <%= order.itemPrice %>
+                                                </td>
+                                                <td>
+                                                    <form action="/onlineorder/orders/<%=order._id %>?_method=DELETE" method="POST">
+                                                        <button class="btn btn-sm btn-danger">
+                                                            <i class="fas fa-trash-alt"></i>
+                                                        </button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <% }); %>
+
+                                                <!-- 						Sum at Table Footer -->
+
+                                                <tr class="font-weight-bold">
+                                                    <td>
+                                                        Total
+                                                    </td>
+                                                    <td>
+                                                        <%= total %>
+                                                    </td>
+                                                </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <div class="m-3">
+                                    <form action="/onlineorder/orders?_method=DELETE" method="POST" class="float-right">
+                                        <button class="btn btn-sm btn-danger mx-3">Remove All</button>
+                                    </form>
+                                </div>
+                                <% } else {%>
+                                    <div class="card card-body p-2 m-3 bg-warning text-center">
+                                        <h5>Your shopping cart is empty</h5>
+                                    </div>
+
+                                    <% } %>
+        </div>
+
+        <div>
+            <a class="btn btn-primary btn-sm mx-3" href="/onlineorder">Back To Shopping</a>
         </div>
 		
-		<div class = "my-3">
-			<div>
-				<a class="btn btn-primary btn-sm" href="/onlineorder">Back To Shopping</a>
-			</div>
-			<div class = "float-right">
-				<form action="/onlineorder/orders?_method=DELETE" method="POST">
-                                        <button class="btn btn-xs btn-danger">Remove</button>
-                                    </form>
-			</div>
+		<div class="card card-body bg-danger text-center text-white my-3 py-2">
+			<h6 class = "display-6">
+				We currently do not offer online order due to staff shortage. 
+				<br>
+				Numbers of our staffs are on vacation with family members, who came back as the result of the 'Blip'. 
+				<br>
+				We apologize for the inconvenience this may cause. 
+			</h6>
 		</div>
+
     </div>
 
     <%include ../partials/footer %>

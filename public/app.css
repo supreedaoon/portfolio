@@ -74,6 +74,10 @@
     width: 30%;
 }
 
+.img_order {
+	width : 95%;
+}
+
 .footer {
     position: fixed;
     left: 0;
@@ -116,9 +120,12 @@ mark {
 }
 
 .ref_link {
-    color: red;
     font-size: 0.5em;
     text-align: right;
+}
+
+.ref_link_size {
+    font-size: 0.5em;
 }
 
 .row_simple {
@@ -211,6 +218,10 @@ mark {
 
 .text_farm_desc{
 	text-align: justify;
+}
+
+.text_space{
+	white-space: pre;
 }
 
 .well_demo {

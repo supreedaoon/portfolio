@@ -27,21 +27,21 @@ var home_image = [
 	]
 
 var products = [
-	{index: 0, order: 0, stock: 10, name: "Orange 350 Baht/Box" , price: "350" , image: "https://drive.google.com/uc?id=1hxumjnYKtA1VBLFTL9DzFnYQK6d7xnti", 
-	 att: "Designed by lifeforstock / Freepik"},
-	{index: 1, order: 0, stock: 10, name: "Pineapple 250 Baht/Box" , price: "250", image: "https://drive.google.com/uc?id=1ZwUyqa3FX031JEC3-OkvuaJEqu3joa6l", 
-	 att: "Designed by dashu83 / Freepik"},
-	{index: 2, order: 0, stock: 10, name: "Strawberry 350 Baht/Box" , price: "350", image: "https://drive.google.com/uc?id=1K3EnYKdYhKgb48K6AxBLn42zkvVweBZi", 
-	 att: "Designed by Valeria_Aksakova / Freepik"},
-	{index: 3, order: 0, stock: 10, name: "Grape: Red and White 260 Baht/Box" , price: "260", image: "https://drive.google.com/uc?id=1QczPdwI5N20E1tOAGOTspbEt_Xkse0OU", att: "Designed by jannoon028 / Freepik"},
-	{index: 4, order: 0, stock: 10, name: "Low Sugar Jam 180 Baht/Jar" , price: "180", image: "https://drive.google.com/uc?id=1baSrjgrGyqr8idGlg80QQEw_bcgxCRPL", 
-	 att: "Designed by Freepik"},
-	{index: 5, order: 0, stock: 10, name: "Sun-Dried Raisin 350 Baht/Pack" , price: "350", image: "https://drive.google.com/uc?id=1nnTQBMh4FxWKGgX1D8YL5lmbSAw7jsMW", att: "Designed by topntp26 / Freepik"},
-	{index: 6, order: 0, stock: 10, name: "Organic Wine 800 Baht/Bottle" , price: "800", image: "https://drive.google.com/uc?id=1O9gHsKzsQsUXFPaL7hpFFkGQLI98qZc1", 
-	 att: "Designed by Freepik"},
-	{index: 7, order: 0, stock: 10, name: "Mixed Rice 250 Baht/Pack" , price: "250", image: "https://drive.google.com/uc?id=1C_JlQZW_thZP_1eQjQluSTcqTJUgnWsy", 
-	 att: "Designed by rawpixel.com / Freepik"},
-	{index: 8, order: 0, stock: 10, name: "Heart-Shaped Herb Extract 2,000 Baht/Bottle" , price: "2000",image: "https://drive.google.com/uc?id=1hYyub2xL9lJp7amCld6sVcpnJc_tGWNK", att: "Designed by Freepik"}
+	{index: 0, name: "Sokovian Orange" , price: "350" , image: "https://drive.google.com/uc?id=1hxumjnYKtA1VBLFTL9DzFnYQK6d7xnti", 
+	 att: "Designed by lifeforstock / Freepik", desc:"Orange is the happiest color.", author:"Frank Sinatra" },
+	{index: 1, name: "Wakandan Pineapple" , price: "250", image: "https://drive.google.com/uc?id=1ZwUyqa3FX031JEC3-OkvuaJEqu3joa6l", 
+	 att: "Designed by dashu83 / Freepik" , desc:"When life gives you lemons, sell them and buy a pineapple. How to better your life 101", author:"Davin Turney"},
+	{index: 2, name: "Area-51 Strawberry" , price: "350", image: "https://drive.google.com/uc?id=1K3EnYKdYhKgb48K6AxBLn42zkvVweBZi", 
+	 att: "Designed by Valeria_Aksakova / Freepik", desc:"Reunited with strawberry, raspberry and blueberry, I am berry, berry happy to be back working with JELL-O", author:"Bill Cosby"},
+	{index: 3, name: "Dionysus Grape" , price: "260", image: "https://drive.google.com/uc?id=1QczPdwI5N20E1tOAGOTspbEt_Xkse0OU", att: "Designed by jannoon028 / Freepik", desc:"The juice of the grape is the liquid quintessence of concentrated sunbeams", author:"Thomas Love Peacock"},
+	{index: 4, name: "Jotunheimian Jam" , price: "180", image: "https://drive.google.com/uc?id=1baSrjgrGyqr8idGlg80QQEw_bcgxCRPL", 
+	 att: "Designed by Freepik", desc:"When I'm in the mood for room service, my favorite order is a peanut-butter-and-jelly sandwich", author:"Pharrell Williams"},
+	{index: 5, name: "Alfheimian Raisin" , price: "350", image: "https://drive.google.com/uc?id=1nnTQBMh4FxWKGgX1D8YL5lmbSAw7jsMW", att: "Designed by topntp26 / Freepik", desc:"Acting in Star Wars, I felt like a raisin in a giant fruit salad, and I didn't even know who the cantaloupes were", author:"Mark Hamill"},
+	{index: 6, name: "Asgardian Wine" , price: "800", image: "https://drive.google.com/uc?id=1O9gHsKzsQsUXFPaL7hpFFkGQLI98qZc1", 
+	 att: "Designed by Freepik", desc:"Where there is no wine there is no love", author:"Euripides"},
+	{index: 7, name: "Midgardian Rice" , price: "250", image: "https://drive.google.com/uc?id=1C_JlQZW_thZP_1eQjQluSTcqTJUgnWsy", 
+	 att: "Designed by rawpixel.com / Freepik", desc:"If you give me rice, I'll eat today; if you teach me how to grow rice, I'll eat every day", author:"Mahatma Gandhi"},
+	{index: 8, name: "Heart-Shaped Herb Extract" , price: "2000",image: "https://drive.google.com/uc?id=1hYyub2xL9lJp7amCld6sVcpnJc_tGWNK", att: "Designed by Freepik", desc:"Yibambe Yibambe Yibambe!!!", author:"Wakandan Warriors"}
 ]
 
 
@@ -57,7 +57,7 @@ router.get("/mypoint", function(req,res){
 	res.render("intro/mypoint.ejs");
 });
 
-router.get("/sunshine", function(req,res){
+router.get("/home", function(req,res){
 	res.render("general/home.ejs", {home_image:home_image});
 });
 
@@ -168,7 +168,7 @@ router.post("/signup", [check('username')
         }
         passport.authenticate("local")(req, res, function(){
 			 req.flash("success", "Successfully Signed Up! Welcome " + req.body.username + " to our community");
-           res.redirect("/sunshine"); 
+           res.redirect("/home"); 
         });
     });
 });
@@ -180,7 +180,7 @@ router.get("/login", function(req, res){
 //Handle Log-In Process
 router.post("/login", passport.authenticate("local", 
     {
-        successRedirect: "/sunshine",
+        successRedirect: "/home",
         failureRedirect: "/login",
 		failureFlash: true
     }), function(req, res){
@@ -190,7 +190,7 @@ router.post("/login", passport.authenticate("local",
 router.get("/logout", function(req, res){
    req.logout();
 	req.flash("success", "Signed out successfully");
-   res.redirect("/sunshine");
+   res.redirect("/home");
 });
 
 
