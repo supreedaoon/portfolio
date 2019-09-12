@@ -1,0 +1,67 @@
+<%include ../partials/header %>
+
+    <div class="container main_container">
+        <header class="jumbotron">
+            <div class="container">
+               <h1 class="display-5">
+                    Product Online Order
+                </h1>
+				<h2>
+                    <small>Stay at home and let your favourite courier deliver healthy food right at your door step</small>
+                </h2>
+            </div>
+        </header>
+		
+		<div class="card card-body bg-danger text-center py-3 ">
+			<h5 class = "text_demo">
+				We currently do not offer online order due to staff shortage. 
+				Numbers of our staffs are on vacation with family members, who came back as the result of the 'Blip'. 
+				We apologize for the inconvenience this may cause. 
+			</h5>
+		</div>
+
+        <div class="row">
+            <% products.forEach(function(product){ %>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="img-thumbnail py-2 my-3">
+                        <img src="<%= product.image %>" class = " img_thumbnail">
+                        <div class = "ref_link">
+                            <a href='http://www.freepik.com'>
+                                <%= product.att %>
+                            </a>
+                        </div>
+                        <div class="caption text-center">
+                            <h6>
+                                <%= product.name %>
+                            </h6>
+                        </div>
+						<!-- 	Button with product ID -hard coded - from passed array.					 -->
+						<div>
+							<a class="btn btn-primary bth-small" href="/onlineorder/<%= product.index %>">Order</a>
+						</div>
+							
+                    </div>
+                </div>
+				
+
+                <% }); %>
+
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        function updateAmount(id) {
+            alert("We currently do not offer online order due to staff shortage. We apologize for the inconvenience this may cause.");
+        }
+    </script>
+
+    <!-- onClick="reply_click(this.id)" -->
+    <script type="text/javascript">
+        function reply_click(clicked_id) {
+            alert(clicked_id);
+        }
+    </script>
+
+    <%include ../partials/footer %>

@@ -1,0 +1,30 @@
+<%include ../partials/header %>
+
+    <div class="container main_container">
+        <div class="card card-body bg-light p-4 mt-1">
+                <h1 class = "display-5">
+                    Product's name
+                </h1>
+		</div>
+		
+		<div>
+			
+		<img src = "<%= products[index].image %>">
+		</div>
+		
+		<div>
+			
+		
+		<form action="/onlineorder" method="POST">
+                <div class="form-group pt-2">
+                    <input type="hidden" name="index" value="<%= index %>">
+                </div>
+				
+                <div class="form-group py-2">
+                    <button class="btn btn-sm btn-primary">Submit Comment!</button>
+                </div>
+        </form>
+		</div>
+</div>
+
+<%include ../partials/footer %>

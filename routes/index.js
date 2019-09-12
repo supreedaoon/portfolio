@@ -2,6 +2,10 @@ var express 	= require("express");
 var router  	= express.Router();
 var passport 	= require("passport");
 var User 		= require("../models/user");
+var Basket		= require("../models/basket");
+var Order		= require("../models/order");
+var middleware 	= require('../middleware');
+
 const { check, validationResult } = require('express-validator');
 
 var home_image = [
@@ -24,21 +28,21 @@ var home_image = [
 	]
 
 var products = [
-	{id: 1, order: 0, stock: 10, name: "Orange 350 Baht/Box" , price: "350" , image: "https://drive.google.com/uc?id=1hxumjnYKtA1VBLFTL9DzFnYQK6d7xnti", 
+	{index: 0, order: 0, stock: 10, name: "Orange 350 Baht/Box" , price: "350" , image: "https://drive.google.com/uc?id=1hxumjnYKtA1VBLFTL9DzFnYQK6d7xnti", 
 	 att: "Designed by lifeforstock / Freepik"},
-	{id: 2, order: 0, stock: 10, name: "Pineapple 250 Baht/Box" , price: "250", image: "https://drive.google.com/uc?id=1ZwUyqa3FX031JEC3-OkvuaJEqu3joa6l", 
+	{index: 1, order: 0, stock: 10, name: "Pineapple 250 Baht/Box" , price: "250", image: "https://drive.google.com/uc?id=1ZwUyqa3FX031JEC3-OkvuaJEqu3joa6l", 
 	 att: "Designed by dashu83 / Freepik"},
-	{id: 3, order: 0, stock: 10, name: "Strawberry 350 Baht/Box" , price: "350", image: "https://drive.google.com/uc?id=1K3EnYKdYhKgb48K6AxBLn42zkvVweBZi", 
+	{index: 2, order: 0, stock: 10, name: "Strawberry 350 Baht/Box" , price: "350", image: "https://drive.google.com/uc?id=1K3EnYKdYhKgb48K6AxBLn42zkvVweBZi", 
 	 att: "Designed by Valeria_Aksakova / Freepik"},
-	{id: 4, order: 0, stock: 10, name: "Grape: Red and White 260 Baht/Box" , price: "260", image: "https://drive.google.com/uc?id=1QczPdwI5N20E1tOAGOTspbEt_Xkse0OU", att: "Designed by jannoon028 / Freepik"},
-	{id: 5, order: 0, stock: 10, name: "Low Sugar Jam 180 Baht/Jar" , price: "180", image: "https://drive.google.com/uc?id=1baSrjgrGyqr8idGlg80QQEw_bcgxCRPL", 
+	{index: 3, order: 0, stock: 10, name: "Grape: Red and White 260 Baht/Box" , price: "260", image: "https://drive.google.com/uc?id=1QczPdwI5N20E1tOAGOTspbEt_Xkse0OU", att: "Designed by jannoon028 / Freepik"},
+	{index: 4, order: 0, stock: 10, name: "Low Sugar Jam 180 Baht/Jar" , price: "180", image: "https://drive.google.com/uc?id=1baSrjgrGyqr8idGlg80QQEw_bcgxCRPL", 
 	 att: "Designed by Freepik"},
-	{id: 6, order: 0, stock: 10, name: "Sun-Dried Raisin 350 Baht/Pack" , price: "350", image: "https://drive.google.com/uc?id=1nnTQBMh4FxWKGgX1D8YL5lmbSAw7jsMW", att: "Designed by topntp26 / Freepik"},
-	{id: 7, order: 0, stock: 10, name: "Organic Wine 800 Baht/Bottle" , price: "800", image: "https://drive.google.com/uc?id=1O9gHsKzsQsUXFPaL7hpFFkGQLI98qZc1", 
+	{index: 5, order: 0, stock: 10, name: "Sun-Dried Raisin 350 Baht/Pack" , price: "350", image: "https://drive.google.com/uc?id=1nnTQBMh4FxWKGgX1D8YL5lmbSAw7jsMW", att: "Designed by topntp26 / Freepik"},
+	{index: 6, order: 0, stock: 10, name: "Organic Wine 800 Baht/Bottle" , price: "800", image: "https://drive.google.com/uc?id=1O9gHsKzsQsUXFPaL7hpFFkGQLI98qZc1", 
 	 att: "Designed by Freepik"},
-	{id: 8, order: 0, stock: 10, name: "Mixed Rice 250 Baht/Pack" , price: "250", image: "https://drive.google.com/uc?id=1C_JlQZW_thZP_1eQjQluSTcqTJUgnWsy", 
+	{index: 7, order: 0, stock: 10, name: "Mixed Rice 250 Baht/Pack" , price: "250", image: "https://drive.google.com/uc?id=1C_JlQZW_thZP_1eQjQluSTcqTJUgnWsy", 
 	 att: "Designed by rawpixel.com / Freepik"},
-	{id: 9, order: 0, stock: 10, name: "Heart-Shaped Herb Extract 2,000 Baht/Bottle" , price: "2000",image: "https://drive.google.com/uc?id=1hYyub2xL9lJp7amCld6sVcpnJc_tGWNK", att: "Designed by Freepik"}
+	{index: 8, order: 0, stock: 10, name: "Heart-Shaped Herb Extract 2,000 Baht/Bottle" , price: "2000",image: "https://drive.google.com/uc?id=1hYyub2xL9lJp7amCld6sVcpnJc_tGWNK", att: "Designed by Freepik"}
 ]
 
 
@@ -68,7 +72,51 @@ router.get("/cafe", function(req,res){
 });
 
 router.get("/onlineorder", function(req,res){
-	res.render("general/onlineorder.ejs", {products:products});
+	res.render("onlineorder/onlineorder.ejs", {products:products});
+});
+
+router.get("/onlineorder/summary", middleware.isLoggedIn, function(req,res){
+	var listOrder = [];
+	 req.user.orders.forEach( function(order){
+		
+		 Order.findById(order, function (err, foundOrder){
+			if(err){
+				console.log(err);
+				res.redirect("/onlineorder");
+			}
+			// console.log(foundOrder);
+			listOrder.push({itemName : foundOrder.itemName, itemIndex : foundOrder.itemIndex, itemPrice: foundOrder.itemPrice});
+			// go to summary when all items are pushed 
+// 			we might be able to use promise in this case.  			
+			 if(listOrder.length == req.user.orders.length){		 
+	res.render("onlineorder/summary.ejs", {listOrder:listOrder});
+			 }
+		});
+	});
+});
+
+router.post("/onlineorder", middleware.isLoggedIn, function(req,res){
+	console.log(req.body);
+	var itemIndex = req.body.index;
+			var itemName = products[parseInt(itemIndex)].name;
+			var itemPrice = products[parseInt(itemIndex)].price;
+			
+            Order.create({itemIndex:itemIndex, itemName:itemName, itemPrice:itemPrice}, function(err, order) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    
+                    order.save();
+					req.user.orders.push(order);
+                    req.user.save();
+					
+					res.redirect("onlineorder/summary");
+                }
+            });
+});
+
+router.get("/onlineorder/:index", function(req,res){
+	res.render("onlineorder/show.ejs", {products:products, index:req.params.index});
 });
 
 router.get("/visit", function(req,res){

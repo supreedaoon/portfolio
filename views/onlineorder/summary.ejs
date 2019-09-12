@@ -1,0 +1,26 @@
+<%include ../partials/header %>
+
+    <div class="container main_container">
+        <div class="card card-body bg-light p-4 mt-1">
+                <h1 class = "display-5">
+                    Order Summary
+                </h1>
+		</div>
+		
+		<div>
+			<!-- user.orders.forEach() -->
+			
+			 <% listOrder.forEach(function(order){ %>
+				<h4>
+					<%= order.itemName %>
+				</h4>
+				<h4>
+					<%= order.itemPrice %>
+				</h4>
+			<% console.log(typeof order.itemPrice) %>
+			<% }); %>
+		</div>
+</div>
+
+<%include ../partials/footer %>
+
