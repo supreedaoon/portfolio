@@ -17,13 +17,23 @@
              color: rgba(0, 191, 255, 0.5);
             text-decoration: none;
         }
+		
+		.btn.focus, .btn:focus {
+    	outline: 0;
+    	box-shadow: none!important;
+		}
+		
 	</style>
 
 </head>
 
 <body id="webstatus">
     <div class="containner">
-        <div class="space_add_10"></div>
+		<div class = "space_add_10">
+			
+		</div>
+		
+<!-- 		Current Tasks -->
         <table class="table text_table_content">
             <thead>
                 <tr class="text_table_head">
@@ -37,9 +47,10 @@
                     <td>Implement API</td>
                     <td>15.09.2019</td>
                 </tr>
+				
 				<tr>
-                    <td>Another Web Demo: use React</td>
-                    <td>To be announced</td>
+                    <td>Another Web Demo: React</td>
+                    <td>21.09.2019</td>
                 </tr>
 				<tr>
                     <td>Farming Games</td>
@@ -48,11 +59,54 @@
 				
             </tbody>
         </table>
+		
+<!-- 		 Finished Tasks-->
+		<div class="collapse" id="collapseExample">
+		<table class="table text_table_content">
+            <thead>
+                <tr class="text_table_head">
+                    <th>Finished Task</th>
+                    <th>Release Date</th>
 
+                </tr>
+            </thead>
+            <tbody>
+				<tr>
+                    <td><del>Message after Log-In, Sign-Up</del></td>
+                    <td><del>06.09.2019</del></td>
+				
+                </tr>
+				<tr>
+                    <td><del>Catch error from content-filter</del></td>
+                    <td><del>08.09.2019</del></td>
+
+                </tr>
+				<tr>
+                    <td><del>Migrate to Bootstrap4</del></td>
+                    <td><del>9.09.2019</del></td>
+                </tr>
+				<tr>
+                    <td><del>Online order page: Add to basket and summary</del></td>
+                    <td><del>14.09.2019</del></td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+
+   
+    <div class="text-center my-3">
+		 <div class="btn-group">
+			 <button class = "btn button_web mx-3" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">View/Hide Finished Tasks</button>
+			<a href="/home" class="btn button_web mx-3" role="button">To Website Demo</a>
+		</div>
     </div>
-    <div class="text-center">
-        <a href="/home" class="btn button_web" role="button">To Website Demo</a>
-    </div>
+		
+
+<!-- Bootstrap Script		 -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+		
 
 </body>
 
