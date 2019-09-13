@@ -21,7 +21,8 @@ Website of a imaginary farm.
   * Reviews and comments would be pre-screened to prevent attack on database. 
   * Images are uploaded from devices and stored at Cloudinary.  
 3. Users can edit/delete only their own reviews or comments.  
-4. Online-Order function allows users to add items to cart an edit the cart. Users can see summary of the cart and discount(if any).  
+4. Admin can edit/delete any reviews/comments.  
+4. Online-Order function allows users to add items to cart/ remove an item/ remove all items from the cart. Users can see summary of the cart.  
   * Since the farm does not exist, **the purchase cannot be complete**. 
 
 #### Sunshine Farm and Cafe : Technical Information  
