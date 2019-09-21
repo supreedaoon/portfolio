@@ -1,5 +1,9 @@
 <%include ../partials/header %>
 
+<!--  Show page for a customer review 
+User can edit/ delete their own review, comments.
+Admin and edit, delete everything -->
+
     <div class="container main_container pt-2">
         <div class="card card-body bg-light p-4 mt-1">
             <h1 class="display-5">
@@ -31,7 +35,7 @@
                         <small><span>Reviewed by: </span>
                         <%= review.author.username %></small>
                     </h6>
-					
+<!-- 				Show edit/delete button only for review owner/ admin	 -->
 					<div>
                     <% if(currentUser && (review.author.id.equals(currentUser._id) || currentUser.isAdmin)){ %>
                         <a class="btn btn-xs btn-warning" href="/review/<%= review._id %>/edit">Edit</a>
@@ -50,8 +54,6 @@
                 <div class="card card-body bg-light p-2">
                     <!-- 	Comment from other customers	 -->
                     <div class = "py-3">
-						<% console.log("review")%>
-						<% console.log(review.comments)%>
 						
                         <% review.comments.forEach(function(comment){ %>
                             <div>
@@ -61,6 +63,8 @@
                                         <p class="text_italic">-
                                             <small><%= comment.author.username %>-</small></p>
                                 </h6>
+								
+								<!-- 				Show edit/delete button only for commnet owner/ admin	 -->
 								<div class = "pt-2">
                                 <% if(currentUser && (comment.author.id.equals(currentUser._id)||currentUser.isAdmin)){ %>
                                     <a class="btn btn-xs btn-warning" href="/review/<%= review._id %>/comment/<%=comment._id %>/edit">Edit</a>

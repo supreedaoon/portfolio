@@ -13,10 +13,12 @@ var express 	= require("express"),
 	Order        = require("./models/order"),
 	check		= require('express-validator');
 
+// get route from route files
 var ReviewRoutes	= require("./routes/review"),
     commentRoutes 	= require("./routes/comment"),
     indexRoutes     = require("./routes/index");
 
+// set up NPM-content filter
 var filterOptions = {
     urlBlackList:['$','{','&&','||'],
     bodyBlackList:['$','{','&&','||'],
@@ -24,8 +26,9 @@ var filterOptions = {
  	dispatchToErrorHandler: true,
 }
 
-// mongoose.connect("mongodb://localhost:27017/sunshine", { useNewUrlParser: true });
 
+// if online -> use MongoDB Atlas + variable in HEROKU
+// else use local MongoDB Database
 const databaseUri = process.env.DATABASEURL || "mongodb://localhost:27017/sunshine";
 mongoose.set('useFindAndModify', false);
 mongoose.connect(databaseUri, { useNewUrlParser: true  })
@@ -52,7 +55,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//pass current user
+//pass current user, message for flash
 app.use(function(req, res, next){
    res.locals.currentUser = req.user;
    res.locals.success = req.flash('success');

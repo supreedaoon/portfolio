@@ -3,9 +3,9 @@ var router = express.Router();
 var Review = require('../models/review');
 var Comment = require('../models/comment');
 var middleware = require('../middleware');
-//var request = require("request");
 var multer = require('multer');
 
+// handle image upload
 var storage = multer.diskStorage({
     filename: function(req, file, callback) {
         callback(null, Date.now() + file.originalname);
@@ -23,6 +23,7 @@ var upload = multer({ storage: storage, fileFilter: imageFilter });
 
 var cloudinary = require('cloudinary');
 
+// handle confidential variable for Cloudinary
 if (!process.env.DATABASEURL) {
     var config = require('../resources/private.js');
     cloudinary.config({
@@ -38,7 +39,7 @@ if (!process.env.DATABASEURL) {
     });
 }
 
-//main review
+//Show all reviews
 router.get('/review', function(req, res) {
     Review.find({}, function(err, ListOfReview) {
         if (err) {
@@ -49,7 +50,10 @@ router.get('/review', function(req, res) {
     });
 });
 
-//handle new review
+// *********** Content filter stop working with review since implementation of Cloudinary
+// *********** Suspect: Async cause problem 
+//handle new review and upload image
+// Always check if user is logged-in
 router.post('/review', middleware.isLoggedIn, upload.single('image'), function(req, res) {
     cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
         if (err) {
@@ -57,6 +61,7 @@ router.post('/review', middleware.isLoggedIn, upload.single('image'), function(r
             return res.redirect('/review');
         }
         var star = req.body.star;
+// 		get information from cloudinary
         var image = result.secure_url;
         var imageId = result.public_id;
         var reviewTitle = req.body.reviewTitle;
@@ -85,6 +90,7 @@ router.post('/review', middleware.isLoggedIn, upload.single('image'), function(r
 });
 
 //Form to create new review
+// Always check if user is logged-in
 router.get('/review/new', middleware.isLoggedIn, function(req, res) {
     res.render('review/new.ejs');
 });
@@ -105,6 +111,7 @@ router.get('/review/:id', function(req, res) {
 });
 
 //Form to edit review
+//Check if user is logged-in and owns the review
 router.get('/review/:id/edit', middleware.isLoggedIn, middleware.checkReviewOwnership, function(
     req,
     res
@@ -115,19 +122,19 @@ router.get('/review/:id/edit', middleware.isLoggedIn, middleware.checkReviewOwne
 });
 
 //Handle updated review
-router.put('/review/:id', middleware.checkReviewOwnership, upload.single('image'), function(
-    req,
-    res
-) {
+//Check if user owns the review
+router.put('/review/:id', middleware.checkReviewOwnership, upload.single('image'), function(req, res) {
     Review.findById(req.params.id, async function(err, updateReview) {
         if (err) {
             req.flash('error', err.message);
             res.redirect('back');
         } else {
+// 			check if new image is uploaded
             if (req.file) {
                 try {
-                    //get new image
+                    //remove old image from cloudinary 
                     await cloudinary.v2.uploader.destroy(updateReview.imageId);
+// 					upload new image in cloudinary
                     var result = await cloudinary.v2.uploader.upload(req.file.path);
                     updateReview.imageId = result.public_id;
                     updateReview.image = result.secure_url;
@@ -146,7 +153,8 @@ router.put('/review/:id', middleware.checkReviewOwnership, upload.single('image'
     });
 });
 
-//Delete Review
+//Delete a Review
+//Check if user owns the review
 router.delete('/review/:id', middleware.checkReviewOwnership, function(req, res) {
     Review.findById(req.params.id, async function(err, foundReview) {
         if (err) {
@@ -154,8 +162,9 @@ router.delete('/review/:id', middleware.checkReviewOwnership, function(req, res)
             return res.redirect('/review');
         }
         try {
+// 			remove image from Cloudinary
             await cloudinary.v2.uploader.destroy(foundReview.imageId);
-
+// 			Delete comments related to this review
             Comment.deleteMany({ _id: { $in: foundReview.comments } }, err => {
                 if (err) {
                     console.log(err);
@@ -168,7 +177,7 @@ router.delete('/review/:id', middleware.checkReviewOwnership, function(req, res)
             res.redirect('/review');
         } catch (err) {
             if (err) {
-                console.log('Problem here');
+                console.log('Problem occured during image, comment removing');
                 req.flash('error', err.message);
                 return res.redirect('/review');
             }

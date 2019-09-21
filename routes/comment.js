@@ -5,6 +5,7 @@ var Comment = require("../models/comment");
 var middleware = require("../middleware");
 
 //create new comment //we don't have SHOW page exclusively for comments
+// Check if user is logged-in
 router.get("/review/:id/comment/new", middleware.isLoggedIn, function(req,res){
 	
 	Review.findById(req.params.id, function(err, theReview){
@@ -18,6 +19,7 @@ router.get("/review/:id/comment/new", middleware.isLoggedIn, function(req,res){
 });
 
 //handle new comment
+// Check if user is logged-in
 router.post('/review/:id/comment', middleware.isLoggedIn, function(req, res) {
     Review.findById(req.params.id, function(err, theReview) {
         if (err) {
@@ -43,6 +45,7 @@ router.post('/review/:id/comment', middleware.isLoggedIn, function(req, res) {
 });
 
 //Form to edit cooment
+//Check if user is logged-in and owns the review
 router.get("/review/:id/comment/:comment_id/edit", middleware.isLoggedIn, middleware.checkCommentOwnership, function(req, res){
    Comment.findById(req.params.comment_id, function(err, foundComment){
       if(err){
@@ -57,6 +60,7 @@ router.get("/review/:id/comment/:comment_id/edit", middleware.isLoggedIn, middle
 });
 
 //Handle updated comment
+//Check if user owns the comment
 router.put("/review/:id/comment/:comment_id", middleware.checkCommentOwnership, function(req, res){
    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
       if(err){
@@ -68,6 +72,7 @@ router.put("/review/:id/comment/:comment_id", middleware.checkCommentOwnership, 
 });
 
 //Delete Comment
+//Check if user owns the comment
 router.delete("/review/:id/comment/:comment_id", middleware.checkCommentOwnership, function(req, res){
     //findByIdAndRemove
     Comment.findByIdAndRemove(req.params.comment_id, function(err){

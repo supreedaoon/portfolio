@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var passportLocalMongoose = require("passport-local-mongoose");
 
+// one user can have several online order
 var UserSchema = new mongoose.Schema({
     username: String,
     password: String,

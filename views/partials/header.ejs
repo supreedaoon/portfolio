@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-
+<!--  			Include all essential Style Sheet/ Script / Nav-Bar / Flas Message -->
 <head>
     <title>Sunshine Farm and Cafe</title>
     <link rel="icon" href="/sunshine_icon.ico">
@@ -15,18 +15,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 	
-
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script> -->
-
+<!--  		Customized style sheet -->
     <link rel="stylesheet" type="text/css" href="/app.css">
 
 </head>
 
 <body id="sunshine">
-
+<!--  		Nav-Bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">Su's Portfolio</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -54,6 +49,9 @@
                 </li>
             </ul>
 
+<!-- 			 	Right hand-side of Nav-Bar 
+					If user is not logged-in -> show Sign-Up/Login
+					If user is logged-in -> show Shopping Cart/ Log-Out -->
             <ul class="nav navbar-nav ml-auto">
 				<% if(!currentUser){ %>
                 <li class="nav-item">
@@ -83,6 +81,7 @@
         </div>
     </nav>
 
+<!-- 	 	Flash Message -->
     <div class="container pt-3">
         <% if(error && error.length > 0) { %>
             <div class="alert alert-danger">

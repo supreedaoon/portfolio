@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 
+<!-- 	 	Show current tasks in Web-Demo Project and (hidden )finished tasks-->
 <head>
     <title>Su's Portfolio</title>
     <link rel="icon" href="/su_logo.ico">
@@ -9,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/app.css">
 
+<!-- Style for link and button need to be overwrite here because we don't want it to be blue	 -->
     <style>
         a:hover,
         a:visited,
@@ -52,6 +54,18 @@
                     <td>27.09.2019</td>
                 </tr>
 				<tr>
+                    <td>Django</td>
+                    <td>05.10.2019</td>
+                </tr>
+				<tr>
+                    <td>Review Add/Edit: Debug Content-Filter</td>
+                    <td>To be announced</td>
+                </tr>
+				<tr>
+                    <td>Online Order: Admin view/edit/delete item in users' cart</td>
+                    <td>To be announced</td>
+                </tr>
+				<tr>
                     <td>Farming Games</td>
                     <td>To be announced</td>
                 </tr>
@@ -59,7 +73,7 @@
             </tbody>
         </table>
 		
-<!-- 		 Finished Tasks-->
+<!-- 	Table that show	finished Tasks is hided -->
 		<div class="collapse" id="collapseExample">
 		<table class="table text_table_content">
             <thead>
@@ -92,7 +106,7 @@
         </table>
 		</div>
 
-   
+<!--     Button to show finished tasks -->
     <div class="text-center my-3">
 		 <div class="btn-group">
 			 <button class = "btn button_web mx-3" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">View/Hide Finished Tasks</button>

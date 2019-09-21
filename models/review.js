@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-
+// There could be several comment for one review 
 var reviewSchema = new mongoose.Schema({
 	star: String,
 	image:String,

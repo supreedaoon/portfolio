@@ -7,9 +7,10 @@
             </h1>
     	</div>
         <div class = "py-2 text-center">
-			<divv><h6 class = "text-danger float-right">
+			<div><h6 class = "text-danger float-right">
 				<strong>*Characters: $, {, &&, || are forbidden</strong>
-			</h6></divv>
+			</h6></div>
+<!-- 			 Overwrite POST with PUT-->
 			<form action="/review/<%= review._id %>/comment/<%= comment._id %>?_method=PUT" method="POST">
                 <div class="form-group pt-2">
                     <input class="form-control" type="text" name="comment[text]" value="<%= comment.text %>">

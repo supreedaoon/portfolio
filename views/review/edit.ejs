@@ -1,5 +1,6 @@
 <% include ../partials/header %>
 
+<!--  	Edit Review use the same form as new review but included the stored information as place holder-->
     <div class="container main_container pt-2 pb-5">
         <div class="card card-body bg-light p-4 mt-1">
             <h1 class = "display-5">
@@ -8,9 +9,10 @@
         </div>
 
         <div class="textbox_review py-3">
-			<divv><h6 class = "text-danger float-right">
+			<div><h6 class = "text-danger float-right">
 				<strong>*Characters: $, {, &&, || are forbidden</strong>
-			</h6></divv>
+			</h6></div>
+<!-- 			 Overwrite Post with Put -->
 			<form action = "/review/<%= review._id %>?_method=PUT" method="POST" enctype="multipart/form-data">
                 <div class="form-group pt-2 float-left">
                     <span>Please select number of star again:</span>

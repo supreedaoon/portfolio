@@ -1,5 +1,6 @@
 <%include ../partials/header %>
-
+<!--  order summary 
+User can see order summary and remove an item or all item -->
     <div class="container main_container pb-3">
         <div class="card card-body bg-light p-4 mt-1">
             <h1 class="display-5">
@@ -35,6 +36,7 @@
                                                     <%= order.itemPrice %>
                                                 </td>
                                                 <td>
+<!-- 													 Delte one item -->
                                                     <form action="/onlineorder/orders/<%=order._id %>?_method=DELETE" method="POST">
                                                         <button class="btn btn-sm btn-danger">
                                                             <i class="fas fa-trash-alt"></i>
@@ -57,7 +59,7 @@
 
                                     </tbody>
                                 </table>
-
+<!--  							remove ALL item-->
                                 <div class="m-3">
                                     <form action="/onlineorder/orders?_method=DELETE" method="POST" class="float-right">
                                         <button class="btn btn-sm btn-danger mx-3">Remove All</button>

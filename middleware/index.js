@@ -1,9 +1,9 @@
 var Review = require("../models/review");
 var Comment = require("../models/comment");
-
-
+ 
 var middlewareObj = {};
 
+// check ownership of review: return review only for owner or admin
 middlewareObj.checkReviewOwnership = function(req, res, next) {
  if(req.isAuthenticated()){
         Review.findById(req.params.id, function(err, foundReview){
@@ -24,6 +24,7 @@ middlewareObj.checkReviewOwnership = function(req, res, next) {
     }
 }
 
+// check Comment ownership: return comment for owner or admin
 middlewareObj.checkCommentOwnership = function(req, res, next) {
  if(req.isAuthenticated()){
         Comment.findById(req.params.comment_id, function(err, foundComment){
@@ -44,6 +45,7 @@ middlewareObj.checkCommentOwnership = function(req, res, next) {
     }
 }
 
+// check if user log-in or not and redirect. 
 middlewareObj.isLoggedIn = function(req, res, next){
     if(req.isAuthenticated()){
         return next();
