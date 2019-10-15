@@ -34,4 +34,4 @@ Website of a imaginary farm.
 
 ## Project Status
 
-Regularly updated
+Pending
