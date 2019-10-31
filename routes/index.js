@@ -29,7 +29,7 @@ router.get("/home", function(req,res){
 });
 
 router.get("/farm", function(req,res){
-	var farm_map = {name:"Map", image: "https://drive.google.com/uc?id=16o1xgaJBcjtVGf82JKKwH7VQ22ixge9u"}
+	var farm_map = {name:"Map", image: "https://drive.google.com/uc?id=1ofyIN09ccDs9tj8rbTblK84YQhjqo2xT"}
 	res.render("general/farm.ejs", {farm_map:farm_map});
 });
 
