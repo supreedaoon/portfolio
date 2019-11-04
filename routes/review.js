@@ -54,46 +54,46 @@ router.get('/review', function(req, res) {
 // *********** Suspect: Async cause problem 
 //handle new review and upload image
 // Always check if user is logged-in
-router.post('/review', middleware.isLoggedIn, upload.single('image'), function(req, res) {
-    cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
-        if (err) {
-            req.flash('error', err.message);
-            return res.redirect('/review');
-        }
-        var star = req.body.star;
-// 		get information from cloudinary
-        var image = result.secure_url;
-        var imageId = result.public_id;
-        var reviewTitle = req.body.reviewTitle;
-        var reviewContent = req.body.reviewContent;
-        var author = {
-            id: req.user._id,
-            username: req.user.username
-        };
-        var newReview = {
-            star: star,
-            image: image,
-            imageId: imageId,
-            reviewTitle: reviewTitle,
-            reviewContent: reviewContent,
-            author: author
-        };
+// router.post('/review', middleware.isLoggedIn, upload.single('image'), function(req, res) {
+//     cloudinary.v2.uploader.upload(req.file.path, function(err, result) {
+//         if (err) {
+//             req.flash('error', err.message);
+//             return res.redirect('/review');
+//         }
+//         var star = req.body.star;
+// // 		get information from cloudinary
+//         var image = result.secure_url;
+//         var imageId = result.public_id;
+//         var reviewTitle = req.body.reviewTitle;
+//         var reviewContent = req.body.reviewContent;
+//         var author = {
+//             id: req.user._id,
+//             username: req.user.username
+//         };
+//         var newReview = {
+//             star: star,
+//             image: image,
+//             imageId: imageId,
+//             reviewTitle: reviewTitle,
+//             reviewContent: reviewContent,
+//             author: author
+//         };
 
-        Review.create(newReview, function(err, campground) {
-            if (err) {
-                req.flash('error', err.message);
-                return res.redirect('/review');
-            }
-            res.redirect('/review');
-        });
-    });
-});
+//         Review.create(newReview, function(err, campground) {
+//             if (err) {
+//                 req.flash('error', err.message);
+//                 return res.redirect('/review');
+//             }
+//             res.redirect('/review');
+//         });
+//     });
+// });
 
 //Form to create new review
 // Always check if user is logged-in
-router.get('/review/new', middleware.isLoggedIn, function(req, res) {
-    res.render('review/new.ejs');
-});
+// router.get('/review/new', middleware.isLoggedIn, function(req, res) {
+//     res.render('review/new.ejs');
+// });
 
 //Show more detail about a review
 router.get('/review/:id', function(req, res) {
