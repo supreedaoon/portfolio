@@ -13,12 +13,12 @@
 }
 
 #landing {
-    background: url('https://drive.google.com/uc?id=1PU3FpQrDuh0mndn55tGYTvZdt-IoZf87') no-repeat
+    /* background: url('https://drive.google.com/uc?id=1PU3FpQrDuh0mndn55tGYTvZdt-IoZf87') no-repeat
         center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; */
 }
 
 #webstatus {
